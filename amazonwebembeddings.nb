@@ -1,0 +1,102 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[      2930,         94]
+NotebookOptionsPosition[      2630,         80]
+NotebookOutlinePosition[      2973,         95]
+CellTagsIndexPosition[      2930,         92]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"string", " ", "=", " ", 
+   RowBox[{"ReadString", "[", "\"\<sentic2vec.csv\>\"", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"lines", " ", "=", " ", 
+   RowBox[{"Rest", "[", 
+    RowBox[{"StringSplit", "[", 
+     RowBox[{"string", ",", " ", "\"\<\\r\\n\>\""}], "]"}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"clean", " ", "=", " ", 
+   RowBox[{"StringRiffle", "[", 
+    RowBox[{
+     RowBox[{"StringReplace", "[", 
+      RowBox[{
+       RowBox[{"StringDrop", "[", 
+        RowBox[{"lines", ",", 
+         RowBox[{"-", "1"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+          "\"\<senticnet\>\"", "|", "\"\<[\>\"", "|", "\"\<=\>\"", "|", 
+           "\"\<'\>\""}], " ", "\[Rule]", "\"\<\>\""}], ",", " ", 
+         RowBox[{"\"\<]\>\"", " ", "\[Rule]", " ", "\"\<,\>\""}]}], " ", 
+        "}"}]}], "]"}], ",", " ", "\"\<\\n\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"list", " ", "=", 
+   RowBox[{"ImportString", "[", 
+    RowBox[{"clean", ",", " ", "\"\<CSV\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"stringTrim", "[", 
+   RowBox[{"s_", "?", "StringQ"}], "]"}], " ", ":=", " ", 
+  RowBox[{"StringTrim", "[", "s", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stringTrim", "[", "any_", "]"}], " ", ":=", " ", "any"}], "\n", 
+ RowBox[{
+  RowBox[{"listclean", " ", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{"stringTrim", ",", " ", "list", ",", " ", 
+     RowBox[{"{", "2", "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ruleset", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "\[Rule]", 
+      RowBox[{"#", "[", 
+       RowBox[{"[", 
+        RowBox[{"2", ";;", "5"}], "]"}], "]"}]}], "&"}], "/@", 
+    "listclean"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.707687498901552*^9, 
+  3.707687507616353*^9}},ExpressionUUID->"55f41d1f-cff2-412d-8711-\
+021ef587d607"]
+},
+WindowSize->{1269, 695},
+WindowMargins->{{Automatic, 0}, {Automatic, 86}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 27, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[561, 20, 2065, 58, 184, "Input", "ExpressionUUID" -> \
+"55f41d1f-cff2-412d-8711-021ef587d607"]
+}
+]
+*)
+

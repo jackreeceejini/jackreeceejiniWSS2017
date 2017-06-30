@@ -1,0 +1,301 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     12419,        293]
+NotebookOptionsPosition[     11206,        257]
+NotebookOutlinePosition[     11550,        272]
+CellTagsIndexPosition[     11507,        269]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"testdata", " ", "=", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\"\<32_teeth\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "0.965`", ",", "0.775`", ",", "0", ",", "0.968`", ",", "\"\<#joy\>\"", 
+        ",", "\"\<#admiration\>\"", ",", "\"\<positive\>\"", ",", "0.903`", 
+        ",", "\"\<snot\>\"", ",", "\"\<good_taste\>\"", ",", 
+        "\"\<mouth_part\>\"", ",", "\"\<gum\>\"", ",", "\"\<near_mouth\>\""}],
+        "}"}]}], ",", 
+     RowBox[{"\"\<a_little\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "0.99`"}], ",", "0", ",", "0", ",", 
+        RowBox[{"-", "0.7`"}], ",", "\"\<#sadness\>\"", ",", 
+        "\"\<#disgust\>\"", ",", "\"\<negative\>\"", ",", 
+        RowBox[{"-", "0.56`"}], ",", "\"\<least\>\"", ",", "\"\<little\>\"", 
+        ",", "\"\<small_amount\>\"", ",", "\"\<shortage\>\"", ",", 
+        "\"\<scarce\>\""}], "}"}]}], ",", 
+     RowBox[{"\"\<a_little_hungry\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "0.757`", ",", "0", ",", "0", ",", "0", ",", "\"\<#joy\>\"", ",", 
+        "\"\<#joy\>\"", ",", "\"\<positive\>\"", ",", "0.252`", ",", 
+        "\"\<get_full\>\"", ",", "\"\<hunger_go_away\>\"", ",", 
+        "\"\<feel_full\>\"", ",", "\"\<hunger\>\"", ",", "\"\<full\>\""}], 
+       "}"}]}], ",", 
+     RowBox[{"\"\<a_little_specific\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0.089`", ",", "0.132`", ",", 
+        RowBox[{"-", "0.1`"}], ",", "0.119`", ",", "\"\<#interest\>\"", ",", 
+        "\"\<#admiration\>\"", ",", "\"\<positive\>\"", ",", "0.079`", ",", 
+        "\"\<clan\>\"", ",", "\"\<happy_together\>\"", ",", 
+        "\"\<many_people\>\"", ",", "\"\<aunt_uncle\>\"", ",", 
+        "\"\<human_group\>\""}], "}"}]}], ",", 
+     RowBox[{"\"\<a_lot\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "0.277`", ",", "0.161`", ",", "0", ",", "0.337`", ",", "\"\<#joy\>\"", 
+        ",", "\"\<#admiration\>\"", ",", "\"\<positive\>\"", ",", "0.258`", 
+        ",", "\"\<many\>\"", ",", "\"\<plenty\>\"", ",", "\"\<big_amount\>\"",
+         ",", "\"\<abundant\>\"", ",", "\"\<good_number\>\""}], "}"}]}], ",", 
+     RowBox[{"\"\<a_lot_of_books\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "0", ",", "0.076`", ",", "0", ",", "0.066`", ",", "\"\<#interest\>\"", 
+        ",", "\"\<#admiration\>\"", ",", "\"\<positive\>\"", ",", "0.047`", 
+        ",", "\"\<library\>\"", ",", "\"\<old_testament\>\"", ",", 
+        "\"\<cook_book\>\"", ",", "\"\<magazine\>\"", ",", 
+        "\"\<librarian\>\""}], "}"}]}], ",", 
+     RowBox[{"\"\<a_lot_of_energy\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "0", ",", "0", ",", "0", ",", "0.766`", ",", "\"\<#admiration\>\"", 
+        ",", "\"\<#admiration\>\"", ",", "\"\<positive\>\"", ",", "0.255`", 
+        ",", "\"\<effort\>\"", ",", "\"\<determination\>\"", ",", 
+        "\"\<discipline\>\"", ",", "\"\<good_condition\>\"", ",", 
+        "\"\<stamina\>\""}], "}"}]}], ",", 
+     RowBox[{"\"\<a_lot_of_fat\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0.758`", ",", 
+        RowBox[{"-", "0.77`"}], ",", "\"\<#anger\>\"", ",", 
+        "\"\<#disgust\>\"", ",", "\"\<negative\>\"", ",", 
+        RowBox[{"-", "0.51`"}], ",", "\"\<overweight\>\"", ",", 
+        "\"\<obese\>\"", ",", "\"\<gross\>\"", ",", "\"\<roly-poly\>\"", ",", 
+        "\"\<heavy\>\""}], "}"}]}], ",", 
+     RowBox[{"\"\<a_lot_of_flowers\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "0.027`", ",", "0.093`", ",", "0.025`", ",", "0.071`", ",", 
+        "\"\<#interest\>\"", ",", "\"\<#admiration\>\"", ",", 
+        "\"\<positive\>\"", ",", "0.055`", ",", "\"\<flower\>\"", ",", 
+        "\"\<love\>\"", ",", "\"\<show_love\>\"", ",", "\"\<rose\>\"", ",", 
+        "\"\<give_flower\>\""}], "}"}]}], ",", 
+     RowBox[{"\"\<a_lot_of_food\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0.043`", ",", 
+        RowBox[{"-", "0.05`"}], ",", "0", ",", "0", ",", "\"\<#joy\>\"", ",", 
+        "\"\<#surprise\>\"", ",", "\"\<positive\>\"", ",", "0.033`", ",", 
+        "\"\<apple_pie\>\"", ",", "\"\<lasagna\>\"", ",", "\"\<jelly\>\"", 
+        ",", "\"\<frozen_food\>\"", ",", "\"\<cottage_cheese\>\""}], 
+       "}"}]}]}], "\[RightAssociation]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7075013692023125`*^9, 
+  3.7075014341194644`*^9}},ExpressionUUID->"b23c3903-61e2-4520-9341-\
+df5b58407e3f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sentics", "[", 
+   RowBox[{"data_", ",", "concept_", ",", "normalizer_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"conceptInfo", ",", "sentics", ",", 
+      RowBox[{"normalize", " ", "=", " ", "normalizer"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"conceptInfo", " ", "=", " ", 
+      RowBox[{"data", "[", 
+       RowBox[{"normalize", "[", "concept", "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"sentics", " ", "=", " ", 
+      RowBox[{"<|", 
+       RowBox[{
+        RowBox[{"\"\<pleasantness\>\"", "\[Rule]", 
+         RowBox[{"conceptInfo", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+        RowBox[{"\"\<attention\>\"", "\[Rule]", 
+         RowBox[{"conceptInfo", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+        RowBox[{"\"\<sensitivity\>\"", "->", 
+         RowBox[{"conceptInfo", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+        RowBox[{"\"\<aptitude\>\"", "\[Rule]", 
+         RowBox[{"conceptInfo", "[", 
+          RowBox[{"[", "4", "]"}], "]"}]}]}], "|>"}]}], ";", "sentics"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7075005884038754`*^9, 3.7075006433394003`*^9}, {
+  3.707500946945775*^9, 3.7075010210748773`*^9}, {3.707501069577116*^9, 
+  3.707501113398737*^9}, {3.7075011667737823`*^9, 3.70750133136957*^9}, {
+  3.7075016017714615`*^9, 3.707501643796609*^9}, {3.7075016744163265`*^9, 
+  3.707501680708802*^9}, {3.7075017114955187`*^9, 3.7075017489501467`*^9}, {
+  3.7075017873357325`*^9, 3.7075018066596127`*^9}, {3.7075024378219166`*^9, 
+  3.7075024633569484`*^9}, {3.7075037870168037`*^9, 3.7075038221837845`*^9}, {
+  3.7075038916140203`*^9, 3.7075040038725405`*^9}, {3.707504040313902*^9, 
+  3.7075041011527967`*^9}, {3.7075041762027483`*^9, 3.7075041889977913`*^9}, {
+  3.7075043900672393`*^9, 3.7075044301052856`*^9}, {3.7075044655263987`*^9, 
+  3.707504574570563*^9}, {3.7075046424545345`*^9, 3.707504651229298*^9}, {
+  3.7075047127058125`*^9, 3.707504716981348*^9}, {3.7075047520215583`*^9, 
+  3.7075048116185527`*^9}},ExpressionUUID->"74663ee2-648e-4c27-a540-\
+b365b8aaf6d6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sentics", "[", 
+  RowBox[{"testdata", ",", "\"\<a lot of food\>\"", ",", "normalized"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7075014667121496`*^9, 3.707501481966926*^9}, {
+  3.707501659875078*^9, 3.707501664225806*^9}, {3.707504110882532*^9, 
+  3.7075041130710087`*^9}, {3.7075045282382946`*^9, 3.7075045300799294`*^9}, {
+  3.707504823475362*^9, 
+  3.707504826843588*^9}},ExpressionUUID->"b23c01a3-5677-4119-9fc4-\
+28cb21e3d2e5"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"pleasantness\"\>", "\[Rule]", "0.043`"}], ",", 
+   RowBox[{"\<\"attention\"\>", "\[Rule]", 
+    RowBox[{"-", "0.05`"}]}], ",", 
+   RowBox[{"\<\"sensitivity\"\>", "\[Rule]", "0"}], ",", 
+   RowBox[{"\<\"aptitude\"\>", "\[Rule]", "0"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.707501482529443*^9, {3.7075016665752516`*^9, 3.707501687949032*^9}, {
+   3.7075017275786343`*^9, 3.707501754729809*^9}, {3.707501798385038*^9, 
+   3.707501817534955*^9}, {3.7075024555869827`*^9, 3.7075024741806774`*^9}, 
+   3.7075038724834523`*^9, 3.7075039609446573`*^9, 3.70750401046961*^9, 
+   3.7075041151510715`*^9, 3.707504196963746*^9, {3.707504525307021*^9, 
+   3.707504588925317*^9}, 3.707504658163398*^9, 3.707504723164076*^9, 
+   3.7075048283637795`*^9},ExpressionUUID->"f990ab2f-34b6-45e3-90be-\
+60cbe389ba42"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"normalized", "[", "concept_", "]"}], ":=", 
+  RowBox[{"StringReplace", "[", 
+   RowBox[{"concept", ",", 
+    RowBox[{"\"\< \>\"", "\[Rule]", "\"\<_\>\""}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"normalized", "[", "\"\<a lot of food\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.707503688322877*^9, 3.7075037365093856`*^9}, {
+  3.707504145936587*^9, 3.7075041522426805`*^9}, {3.7075055012717447`*^9, 
+  3.707505504609455*^9}},ExpressionUUID->"cdd5c66f-2233-40ea-95cf-\
+71acc1aae01d"],
+
+Cell[BoxData["\<\"a_lot_of_food\"\>"], "Output",
+ CellChangeTimes->{
+  3.707504152789407*^9, {3.707505505187566*^9, 
+   3.70750550802042*^9}},ExpressionUUID->"0bb97aee-2382-4b16-9f08-\
+ede47043927d"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"polarityValue", "[", 
+    RowBox[{"data_", ",", "concept_", ",", "normalizer_"}], "]"}], ":=", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "   ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"conceptInfo", ",", "result", ",", 
+       RowBox[{"normalize", " ", "=", " ", "normalizer"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", "   ", 
+     RowBox[{
+      RowBox[{"conceptInfo", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"normalize", "[", "concept", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "   ", 
+      RowBox[{"conceptInfo", "[", 
+       RowBox[{"[", "7", "]"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{"   "}]}], "Input",
+ CellChangeTimes->{{3.7075049535281734`*^9, 3.707505117459049*^9}, {
+  3.7075052884325576`*^9, 3.707505328217479*^9}, {3.707505372396366*^9, 
+  3.7075053748657937`*^9}, {3.707505439059512*^9, 3.7075054533236065`*^9}, {
+  3.7075055457148376`*^9, 
+  3.7075055819024105`*^9}},ExpressionUUID->"f1b82fa2-1923-40a7-b452-\
+5e5570c3c834"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"polarityValue", "[", 
+  RowBox[{"testdata", ",", "\"\<a lot of food\>\"", ",", "normalized"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7075051231131887`*^9, 3.7075051447390604`*^9}, {
+  3.70750545678185*^9, 3.7075054581726375`*^9}, {3.707505552079774*^9, 
+  3.707505554555479*^9}},ExpressionUUID->"bfcf81e4-6e12-4982-8580-\
+effe0df093af"],
+
+Cell[BoxData["\<\"positive\"\>"], "Output",
+ CellChangeTimes->{
+  3.7075051459640913`*^9, {3.7075053387590494`*^9, 3.7075053576529303`*^9}, 
+   3.707505392980458*^9, 3.7075054599237914`*^9, 3.7075055144572625`*^9, 
+   3.707505586709173*^9},ExpressionUUID->"3e1653a9-908c-43fd-bbf5-\
+54243b3fe937"]
+}, Open  ]]
+},
+WindowSize->{1366, 695},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 27, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[561, 20, 4460, 87, 202, "Input", "ExpressionUUID" -> \
+"b23c3903-61e2-4520-9341-df5b58407e3f"],
+Cell[5024, 109, 2198, 44, 107, "Input", "ExpressionUUID" -> \
+"74663ee2-648e-4c27-a540-b365b8aaf6d6"],
+Cell[CellGroupData[{
+Cell[7247, 157, 459, 9, 30, "Input", "ExpressionUUID" -> \
+"b23c01a3-5677-4119-9fc4-28cb21e3d2e5"],
+Cell[7709, 168, 895, 17, 30, "Output", "ExpressionUUID" -> \
+"f990ab2f-34b6-45e3-90be-60cbe389ba42"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8641, 190, 528, 11, 50, "Input", "ExpressionUUID" -> \
+"cdd5c66f-2233-40ea-95cf-71acc1aae01d"],
+Cell[9172, 203, 199, 4, 30, "Output", "ExpressionUUID" -> \
+"0bb97aee-2382-4b16-9f08-ede47043927d"]
+}, Open  ]],
+Cell[9386, 210, 1115, 26, 145, "Input", "ExpressionUUID" -> \
+"f1b82fa2-1923-40a7-b452-5e5570c3c834"],
+Cell[CellGroupData[{
+Cell[10526, 240, 364, 7, 30, "Input", "ExpressionUUID" -> \
+"bfcf81e4-6e12-4982-8580-effe0df093af"],
+Cell[10893, 249, 297, 5, 63, "Output", "ExpressionUUID" -> \
+"3e1653a9-908c-43fd-bbf5-54243b3fe937"]
+}, Open  ]]
+}
+]
+*)
+
