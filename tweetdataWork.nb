@@ -1,0 +1,869 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     36978,        861]
+NotebookOptionsPosition[     34964,        805]
+NotebookOutlinePosition[     35307,        820]
+CellTagsIndexPosition[     35264,        817]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{
+   RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+   "\"\<english_us_corpus_2012_05_22\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.7078487498967743`*^9, 3.707848779562837*^9}, {
+  3.7078489551023226`*^9, 
+  3.707848967378162*^9}},ExpressionUUID->"007aa2ed-9a1b-4f91-b07e-\
+bb05e521da4b"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\vestal \
+etim-oqua\\\\Documents\\\\EmotionCategorizationWSS17\\\\english_us_corpus_\
+2012_05_22\"\>"], "Output",
+ CellChangeTimes->{3.707848781310958*^9, 3.7078488219647217`*^9, 
+  3.7078489699363956`*^9, 
+  3.7078558038868694`*^9},ExpressionUUID->"a4d4af3e-99e6-46da-a892-\
+bf9e9dc6f002"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tweetsFile", " ", "=", " ", "\"\<Eng_US_Twitter.txt\>\""}]], "Input",
+ CellChangeTimes->{{3.7078487179707413`*^9, 3.70784874619052*^9}, {
+   3.7078488417391777`*^9, 3.7078488646977096`*^9}, {3.707848915326725*^9, 
+   3.7078489292536144`*^9}, 
+   3.7078489778469725`*^9},ExpressionUUID->"ae942c53-fae0-4438-8e1b-\
+993538dce37d"],
+
+Cell[BoxData["\<\"Eng_US_Twitter.txt\"\>"], "Output",
+ CellChangeTimes->{
+  3.707848874320413*^9, {3.707848919280004*^9, 3.707848932200859*^9}, 
+   3.7078489825683107`*^9, 
+   3.7078558042789583`*^9},ExpressionUUID->"5af0df51-8f6e-44b3-bc8c-\
+3353547420da"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"8", " ", 
+  RowBox[{"UnitConvert", "[", 
+   RowBox[{
+    RowBox[{"N", "@", 
+     RowBox[{"Quantity", "[", 
+      RowBox[{
+       RowBox[{"FileByteCount", "[", "tweetsFile", "]"}], ",", 
+       "\"\<Bytes\>\""}], "]"}]}], ",", "\"\<Gigabytes\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7078488897584925`*^9, 3.707848897550006*^9}, {
+  3.7078489933560762`*^9, 3.7078490240880938`*^9}, {3.7078491222515464`*^9, 
+  3.70784912269658*^9}},ExpressionUUID->"bfb39d5e-552f-4636-a7ba-\
+8c6568282301"],
+
+Cell[BoxData[
+ TemplateBox[{"1.8466346720000002`","\"GB\"","gigabytes","\"Gigabytes\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{{3.7078488982920094`*^9, 3.7078489359440913`*^9}, 
+   3.707848985273505*^9, 3.7078490319305925`*^9, 3.7078491261087675`*^9, 
+   3.7078558081351795`*^9},ExpressionUUID->"e6b5900e-6671-4f23-b0ef-\
+4351411f7492"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"strm", " ", "=", " ", 
+   RowBox[{"OpenRead", "[", "tweetsFile", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.707849283259828*^9, 
+  3.7078492938025007`*^9}},ExpressionUUID->"d0afa176-41cd-41b3-9653-\
+f239486de16d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cleanTweet", "[", "atweet_", "]"}], ":=", 
+  RowBox[{"ToLowerCase", "[", 
+   RowBox[{"StringReplace", "[", 
+    RowBox[{
+     RowBox[{"StringDrop", "[", 
+      RowBox[{"atweet", ",", "27"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+       "\"\<.\>\"", "|", "\"\<'\>\"", "|", "\"\<!\>\"", "|", "\"\<?\>\"", 
+        "|", "\"\</\>\"", "|", "\"\<\\\\\>\"", "|", "\"\<[\>\"", "|", 
+        "\"\<:\>\"", "|", "\"\<;\>\"", "|", "\"\<&\>\"", "|", "\"\<*\>\"", 
+        "|", "\"\<^\>\"", "|", "\"\<%\>\"", "|", "\"\<$\>\"", "|", 
+        "\"\<#\>\"", "|", "\"\<@\>\"", "|", "\"\<>\>\"", "|", "\"\<<\>\"", 
+        "|", "\"\<,\>\"", "|", "\"\<+\>\"", "|", "\"\<-\>\"", "|", 
+        "\"\<~\>\""}], "\[Rule]", " ", "\"\<\>\""}], "}"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7078561513753576`*^9, 3.7078563905644083`*^9}, {
+  3.7078564484764776`*^9, 3.7078564546589093`*^9}, {3.7078576702075405`*^9, 
+  3.7078576856876745`*^9}, {3.7078578112272267`*^9, 3.707857946598911*^9}, {
+  3.7078579933743443`*^9, 3.7078580273907804`*^9}, {3.7078580905642986`*^9, 
+  3.707858173353176*^9}, {3.7078585213433375`*^9, 3.7078585801546645`*^9}, {
+  3.707858712158391*^9, 3.7078587194969597`*^9}, {3.7078587925332336`*^9, 
+  3.707858796151555*^9}, {3.7078588265768175`*^9, 
+  3.7078588681647253`*^9}},ExpressionUUID->"4e88a61f-5949-4076-ace2-\
+4e9c80411f13"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"readtweets", "[", 
+   RowBox[{"inFileName_", ",", "outFileName_"}], "]"}], ":=", 
+  "\[IndentingNewLine]", "\t", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"inStreamObject", " ", "=", "  ", 
+       RowBox[{"OpenRead", "[", "inFileName", "]"}]}], ",", 
+      RowBox[{"outStreamObject", "=", 
+       RowBox[{"OpenWrite", "[", "outFileName", "]"}]}], ",", "line"}], "}"}],
+     ",", "\[IndentingNewLine]", "\t\t", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"inStreamObject", " ", "=!=", " ", "$Failed"}], ",", 
+       "\[IndentingNewLine]", "\t\t", 
+       RowBox[{
+        RowBox[{"line", " ", "=", " ", 
+         RowBox[{"ReadLine", "[", "inStreamObject", "]"}]}], ";", 
+        "\[IndentingNewLine]", "\t\t", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"line", " ", "=!=", " ", "EndOfFile"}], ",", 
+          "\[IndentingNewLine]", "\t\t", 
+          RowBox[{
+           RowBox[{"WriteLine", "[", 
+            RowBox[{"outStreamObject", ",", 
+             RowBox[{"cleanTweet", "[", "line", "]"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", "\t\t", 
+           RowBox[{"line", " ", "=", " ", 
+            RowBox[{"ReadLine", "[", "inStreamObject", "]"}]}]}]}], 
+         "\[IndentingNewLine]", "\t\t", "]"}]}]}], "\[IndentingNewLine]", 
+      "\t\t", "]"}], ";", 
+     RowBox[{"Close", "[", "inStreamObject", "]"}], ";", 
+     RowBox[{"Close", "[", "outStreamObject", "]"}]}]}], 
+   "\[IndentingNewLine]", "\t\t", "]"}]}]], "Input",
+ CellChangeTimes->{{3.7078564954998875`*^9, 3.707856813560145*^9}, {
+  3.7078568445423183`*^9, 3.707856851404812*^9}, {3.7078582954699764`*^9, 
+  3.7078583005653753`*^9}, {3.707858334885151*^9, 3.7078583472940083`*^9}, {
+  3.7078594264624453`*^9, 3.70785942872454*^9}, {3.7078594794292603`*^9, 
+  3.7078594853646736`*^9}, {3.707859521743208*^9, 3.707859578637391*^9}, {
+  3.7078599280816565`*^9, 3.7078601215783796`*^9}, {3.707860266505611*^9, 
+  3.707860384664362*^9}},ExpressionUUID->"54096ba1-b11e-42eb-8494-\
+a74ad8ad4936"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"inTweetsfile", " ", "=", " ", "\"\<Eng_US_Twitter.txt\>\""}], 
+   ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"outTweetsfile", " ", "=", "\"\<cleanedTweets.txt\>\""}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.707856875315495*^9, 3.707856890306528*^9}, {
+  3.7078569872964344`*^9, 3.707856991989761*^9}, {3.7078580433918805`*^9, 
+  3.7078580451161222`*^9}, {3.7078584544849253`*^9, 3.7078584656787457`*^9}, {
+  3.7078604902001853`*^9, 3.707860512826846*^9}, {3.7078605774582834`*^9, 
+  3.7078606290127497`*^9}},ExpressionUUID->"5d660290-a8ae-412a-a9f8-\
+c7ed2d53d9c3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"readtweets", "[", 
+  RowBox[{"inTweetsfile", ",", "outTweetsfile"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7078606331651154`*^9, 
+  3.7078606425337667`*^9}},ExpressionUUID->"ce44d1e7-623d-44d7-80db-\
+bd9a29c387bf"],
+
+Cell[BoxData["\<\"cleanedTweets.txt\"\>"], "Output",
+ CellChangeTimes->{
+  3.707861876522214*^9},ExpressionUUID->"115acf17-1a3a-4272-86d8-\
+da1d04151c2f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sometweets", " ", "=", " ", "%"}]], "Input",
+ CellChangeTimes->{{3.7078580536096935`*^9, 
+  3.707858060624172*^9}},ExpressionUUID->"8537cb1a-9951-40c7-a15f-\
+94b19c0ded46"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/03\\t0\\t0\\tHow are you? Btw thanks for \
+the RT. You gonna be in DC anytime soon? Love to see you. Been way, way too \
+long.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/17\\t0\\t0\\tWhen you meet someone \
+special... you'll know. Your heart will beat more rapidly and you'll smile \
+for no reason.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/05/17\\t0\\t0\\tthey've decided its more fun \
+if I don't.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/23\\t0\\t0\\tSo Tired D; Played Lazer Tag \
+& Ran A LOT D; Ughh Going To Sleep Like In 5 Minutes ;)\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/16\\t0\\t0\\tWords from a complete \
+stranger! Made my birthday even better :)\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/21\\t0\\t0\\tFirst Cubs game ever! Wrigley \
+field is gorgeous. This is perfect. Go Cubs Go!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2009/10/29\\t0\\t0\\ti no! i get another day off \
+from skool due to the wonderful snow (: and THIS wakes me up...damn \
+thing\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2010/03/18\\t0\\t0\\tI'm coo... Jus at work hella \
+tired r u ever in cali\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/14\\t0\\t0\\tThe new sundrop commercial \
+...hehe love at first sight\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/17\\t0\\t0\\twe need to reconnect THIS \
+WEEK\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/12\\t0\\t0\\tI always wonder how the guys \
+on the auctions shows learned to talk so fast!? all I hear is \
+djsosnekspqnslanskam.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/11/20\\t0\\t0\\tDammnnnnn what a catch\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/05\\t0\\t0\\tsuch a great picture! The \
+green shirt totally brings out your eyes!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/16\\t0\\t0\\tDesk put together, room all \
+set up. Oh boy, oh boy\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/06\\t0\\t0\\tI'm doing it!\[Eth]\.9f\.91\
+\.a6\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/01/26\\t0\\t0\\tBeauty Brainstorming in the \
+Alchemy office with and Sally Walker!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/06/22\\t0\\t0\\tLooking for a new band to \
+blog for the month. anyone interested?\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/07\\t0\\t0\\tPacking for a quick move down \
+the street... If only I had some movers...\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2010/11/13\\t0\\t0\\tford focus hatchback?\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/12\\t0\\t0\\tRT : According to the \
+National Retail Federation $16.3 BILLION was spent on #MothersDay last year!!\
+\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/14\\t0\\t0\\t\[AHat]\.80\.9c: \\\"The \
+tragedy of life is not that it ends so soon, but that we wait so long to \
+begin it.\\\" - W.M. Lewis\[AHat]\.80\.9d\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/12/27\\t0\\t0\\tMore skating! Come by the \
+check out a movie, eat a great dinner and top it off with great times at the \
+ice rink.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/04\\t0\\t0\\twatch your mailbox! : )\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/11\\t0\\t0\\tTommorows the day...\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/07\\t0\\t0\\tGood questions. RT : Your \
+#brand will be judged based on its #website. Is your website a good brand \
+ambassador?...\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/05\\t0\\t0\\tDon't care what others think \
+of you, and you will save yourself a lot of mental energy that instead can be \
+used to push you towards success.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/17\\t0\\t0\\tThis Ron Artest interview... \
+is it possible to die from laughter?\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/01\\t0\\t0\\tLinda! Just looked at my \
+sched & I have to hustle back to Chula for P.M. meetings, so no time 4 lunch. \
+:( Do u meet every Fri?\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/01/22\\t0\\t0\\tBum Squad lets get it! RT : \
+Shout that ninja out for winning\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\tI love you, and I'm so proud \
+of you. From sitting on those stairs on The X Factor, to now. You boys are my \
+inspiration.\[AHat]\.99\[Yen] :) xx\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/10\\t0\\t0\\tMaybe some other time I can't \
+slow down, right across that state line right about now\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/10/01\\t0\\t0\\tExhaust leak! arrrgh\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/02/15\\t0\\t0\\ti Love Reading your magazine \
+(: it always cheers me up\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/09/29\\t0\\t0\\tTables are all sold out for \
+the Mystique Masquerade Ball.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/30\\t0\\t0\\tMake one up! It might help \
+you feel better. Alternative: just scream nonsense at the dumb machine.\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2010/01/31\\t0\\t0\\tya ik and i never asked him \
+to follow me i only mentioned him once in one of my tweets- i didnt do \
+anything else\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\tI will <3\"\>", "}"}],
+    ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/30\\t0\\t0\\tGreat talking to you guys \
+tonight! Looking forward to your piece next week Jon.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/10\\t0\\t0\\tSmall market baseball. You, \
+know...for the 99%.\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"twitter.com\\t2009/11/30\\t0\\t0\\tSing it!\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/11\\t0\\t0\\tit comes on tonight!! not \
+tomorrow!!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\tmaybe? just seems they \
+thought up that idea over sunday brunch and thought it was swell.\"\>", "}"}],
+    ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/09/26\\t0\\t0\\tThanks for the #FF! Awfully \
+good company to be in.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2010/01/31\\t0\\t0\\t\\\"The longer we live the \
+more we find we are like other persons.\\\" ~ Oliver Wendell Holmes\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/11/17\\t0\\t0\\tmade my list for top 99 \
+women.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/11\\t0\\t0\\tnice I watched the whole \
+series, LOVED Julia and her mom Erica was such a badass\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/10\\t0\\t0\\tGOP line on Obama gay \
+marriage stance seems to be that he flip-flopped. Really want to use that \
+with Romney as your presidential candidate?\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/04\\t0\\t0\\tI know, I know. Then you kick \
+yourself when the fight goes lopsided. But if the upset DOES happen, wow. \
+Nothing like it.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/12\\t0\\t0\\tNo stress balls or keg and \
+different crew -- but these guys know how to party\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/26\\t0\\t0\\tWilliam Davis attorney says \
+client will plead insanity. He faces first-degree murder charge in woman's \
+death\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/12\\t0\\t0\\t#OccupyMadison GA: \\\"I \
+always considered myself a liberal until I saw the liberal machine in action. \
+It was ugly.\\\"\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/02/17\\t0\\t0\\tWeird thought: we got to \
+witness the change of a millenia, the next change is 40 generations \
+away...imagine what the differences will be!!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/10/10\\t0\\t0\\tgot a good one?\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2010/09/17\\t0\\t0\\tlove chris brown\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/18\\t0\\t0\\tWit them sexy ass lips\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/02/17\\t0\\t0\\tits sounds good\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/30\\t0\\t0\\tHow (un??)fortunate that \
+those days when every status update was a song lyrics were also the days when \
+I first discovered New Wave...\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/01/04\\t0\\t0\\tI had a bomb ass day Chillin' \
+with friends.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/12/14\\t0\\t0\\tWorking on music for Holiday \
+show on the 23 in Santa Barbara!! OPEN BAR!! Me, Tim from Palin White T's and \
+JR Richards from Dishwalla!!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/08\\t0\\t0\\tHey Nate! Thanks for dropping \
+by yesterday. How was your meal?\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/11\\t0\\t0\\t#FF : literary lights who \
+brightened my week.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/03/01\\t0\\t0\\tTime to shape up! Water, \
+pavement, weights, and zija are going to be my friends. wedding just 4 months \
+away!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/12\\t0\\t0\\tReport the many things that \
+are positive about the University of Arkansas athletics program.\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/02/23\\t0\\t0\\tAthletes/celebrities should \
+have a tool to charge $.99 per RT request. $ to support \
+foundations/charities, fans get involved.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/18\\t0\\t0\\tEnjoy!! Stay cool!!\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/17\\t0\\t0\\t\\\"...yo chick she so \
+thirst...\\\" aye!!! I really don't know what else they're saying tho except \
+that lol\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/27\\t0\\t0\\ttalks in third person.\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/11\\t0\\t0\\t. many things can happen. \
+Only YOU can control your reaction to it. Practice this good\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\t\\\"You will allow me to \
+continue to do what I love.\\\" Big Show's wife?\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/02/07\\t0\\t0\\thaha very cute! Have u heard \
+from julie?? Who's that on her fb I'm tryin not to laugh\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/07/14\\t0\\t0\\tand somedays youre the \
+windshield wiper\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\tI'm taking Adam! :-)\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\tlets do this\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/16\\t0\\t0\\tNot much, Ben - how's \
+you?\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/03\\t0\\t0\\tSarah trying to explain to my \
+teacher YOLO, lmfao .... >>\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/11/30\\t0\\t0\\t#Inspiring RT : Great minds \
+must be ready not only to take opportunities, but to make them. --Colton\"\>",
+     "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/16\\t0\\t0\\tmed school...wow! I could \
+never do that. Am too OCD to be around blood and sick people for long periods \
+of time ;)\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/17\\t0\\t0\\tSleeping? Not likely. RT : \
+Sleeping to\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\tTime for lunch!\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/19\\t0\\t0\\tNot being dependent on anyone \
+for your happiness >>>\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/02\\t0\\t0\\tThis humidity is not sitting \
+well with me at all !! #NeedACInSchool D:\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/04/18\\t0\\t0\\tDo u know whats creepily??? I \
+Hate Cheesecake. Its Cake with Cheese in front of it!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/08/10\\t0\\t0\\tthanks. Got it at \
+walmart!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/06/19\\t0\\t0\\tStill haven't seen #Super8? \
+Every 88th check-in wins a free movie ticket. 45,347 check-ins so far!!\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/27\\t0\\t0\\tRT Congratulations to the for \
+advancing in the #stanleycup Playoffs! They defeated the #Sens in a 4-3 \
+series.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/15\\t0\\t0\\tHey hey hey , can i meet \
+chaaaa ?!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/17\\t0\\t0\\tGhost Hunters makes me cry :( \
+<3\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/09/28\\t0\\t0\\tWho's going to the OVW show \
+tomorrow? your team dominoski will be in the house! First brew after the show \
+is on me!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/21\\t0\\t0\\tjust waking up but #therave \
+last night though>>>>>>\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/13\\t0\\t0\\tat six flags.\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/19\\t0\\t0\\tThanks Tom.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/08\\t0\\t0\\tThey're not applauding \
+because you don't have a button!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/07\\t0\\t0\\t\[CapitalAHat]\[LeftGuillemet]\
+ im not mad.. it just sucks that i cant show you off.\[CapitalAHat]\
+\[RightGuillemet] THIS!.\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/03/26\\t0\\t0\\tI'm at little league majors \
+try outs in\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/24\\t0\\t0\\tWhere my meatballs at? and \
+Naomi :)\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/17\\t0\\t0\\tDoing some #cufon testing and \
+implementation in #wordpress. What the FOUC d'y'all think of cufon?\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/04/12\\t0\\t0\\tlo mejor! it was cool \
+experiencing work through the eyes of an excited teen\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/14\\t0\\t0\\tMe: the only b word u should \
+call a girl is beautful! Colin: or a butterfly!\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2012/05/08\\t0\\t0\\tI just think that the zooming \
+is overused. It needs to be done tastefully. And it's not the point.\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"twitter.com\\t2011/12/24\\t0\\t0\\tIf you have Firefox or Google \
+Chrome type in \\\"let it snow\\\" into google today.\"\>", "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.707858061514197*^9, 
+  3.7078584721632123`*^9},ExpressionUUID->"7e115886-43ab-4fb3-bf58-\
+dafb7c367b61"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"cleanTweet", "[", "#", "]"}], "&"}], "/@", 
+  "sometweets"}]], "Input",
+ CellChangeTimes->{{3.707858064473406*^9, 
+  3.707858076713307*^9}},ExpressionUUID->"42f1d1db-6a71-478c-ab81-\
+feba040e22b6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+   "{", "\<\"how are you btw thanks for the rt you gonna be in dc anytime \
+soon love to see you been way way too long\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"when you meet someone special youll know your heart will beat \
+more rapidly and youll smile for no reason\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"theyve decided its more fun if i dont\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"so tired d played lazer tag  ran a lot d ughh going to sleep \
+like in 5 minutes )\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"words from a complete stranger made my birthday even better \
+)\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"first cubs game ever wrigley field is gorgeous this is perfect \
+go cubs go\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"i no i get another day off from skool due to the wonderful snow \
+( and this wakes me updamn thing\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"im coo jus at work hella tired r u ever in cali\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"the new sundrop commercial hehe love at first sight\"\>", "}"}], 
+   ",", 
+   RowBox[{"{", "\<\"we need to reconnect this week\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"i always wonder how the guys on the auctions shows learned to \
+talk so fast all i hear is djsosnekspqnslanskam\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"dammnnnnn what a catch\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"such a great picture the green shirt totally brings out your \
+eyes\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"desk put together room all set up oh boy oh boy\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"im doing it\[Eth]\.9f\.91\.a6\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"beauty brainstorming in the alchemy office with and sally walker\
+\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"looking for a new band to blog for the month anyone interested\"\
+\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"packing for a quick move down the street if only i had some \
+movers\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"ford focus hatchback\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"rt  according to the national retail federation 163 billion was \
+spent on mothersday last year\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"\[AHat]\.80\.9c \\\"the tragedy of life is not that it ends so \
+soon but that we wait so long to begin it\\\"  wm lewis\[AHat]\.80\.9d\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"more skating come by the check out a movie eat a great dinner \
+and top it off with great times at the ice rink\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"watch your mailbox  )\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"tommorows the day\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"good questions rt  your brand will be judged based on its \
+website is your website a good brand ambassador\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"dont care what others think of you and you will save yourself a \
+lot of mental energy that instead can be used to push you towards \
+success\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"this ron artest interview is it possible to die from \
+laughter\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"linda just looked at my sched  i have to hustle back to chula \
+for pm meetings so no time 4 lunch ( do u meet every fri\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"bum squad lets get it rt  shout that ninja out for winning\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"i love you and im so proud of you from sitting on those stairs \
+on the x factor to now you boys are my inspiration\[AHat]\.99\[Yen] ) xx\"\>",
+     "}"}], ",", 
+   RowBox[{
+   "{", "\<\"maybe some other time i cant slow down right across that state \
+line right about now\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"exhaust leak arrrgh\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"i love reading your magazine ( it always cheers me up\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"tables are all sold out for the mystique masquerade ball\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"make one up it might help you feel better alternative just \
+scream nonsense at the dumb machine\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"ya ik and i never asked him to follow me i only mentioned him \
+once in one of my tweets i didnt do anything else\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"i will 3\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"great talking to you guys tonight looking forward to your piece \
+next week jon\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"small market baseball you knowfor the 99\"\>", "}"}], 
+   ",", 
+   RowBox[{"{", "\<\"sing it\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"it comes on tonight not tomorrow\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"maybe just seems they thought up that idea over sunday brunch \
+and thought it was swell\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"thanks for the ff awfully good company to be in\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"\\\"the longer we live the more we find we are like other \
+persons\\\"  oliver wendell holmes\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"made my list for top 99 women\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"nice i watched the whole series loved julia and her mom erica \
+was such a badass\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"gop line on obama gay marriage stance seems to be that he \
+flipflopped really want to use that with romney as your presidential \
+candidate\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"i know i know then you kick yourself when the fight goes \
+lopsided but if the upset does happen wow nothing like it\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"no stress balls or keg and different crew  but these guys know \
+how to party\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"william davis attorney says client will plead insanity he faces \
+firstdegree murder charge in womans death\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"occupymadison ga \\\"i always considered myself a liberal until \
+i saw the liberal machine in action it was ugly\\\"\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"weird thought we got to witness the change of a millenia the \
+next change is 40 generations awayimagine what the differences will be\"\>", 
+    "}"}], ",", 
+   RowBox[{"{", "\<\"got a good one\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"love chris brown\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"wit them sexy ass lips\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"its sounds good\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"how (un)fortunate that those days when every status update was a \
+song lyrics were also the days when i first discovered new wave\"\>", "}"}], 
+   ",", 
+   RowBox[{"{", "\<\"i had a bomb ass day chillin with friends\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"working on music for holiday show on the 23 in santa barbara \
+open bar me tim from palin white ts and jr richards from dishwalla\"\>", 
+    "}"}], ",", 
+   RowBox[{
+   "{", "\<\"hey nate thanks for dropping by yesterday how was your meal\"\>",
+     "}"}], ",", 
+   RowBox[{"{", "\<\"ff  literary lights who brightened my week\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"time to shape up water pavement weights and zija are going to be \
+my friends wedding just 4 months away\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"report the many things that are positive about the university of \
+arkansas athletics program\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"athletescelebrities should have a tool to charge 99 per rt \
+request  to support foundationscharities fans get involved\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"enjoy stay cool\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"\\\"yo chick she so thirst\\\" aye i really dont know what else \
+theyre saying tho except that lol\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"talks in third person\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\" many things can happen only you can control your reaction to it \
+practice this good\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"\\\"you will allow me to continue to do what i love\\\" big \
+shows wife\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"haha very cute have u heard from julie whos that on her fb im \
+tryin not to laugh\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"and somedays youre the windshield wiper\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"im taking adam )\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"lets do this\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"not much ben  hows you\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"sarah trying to explain to my teacher yolo lmfao  \"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"inspiring rt  great minds must be ready not only to take \
+opportunities but to make them colton\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"med schoolwow i could never do that am too ocd to be around \
+blood and sick people for long periods of time )\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"sleeping not likely rt  sleeping to\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"time for lunch\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"not being dependent on anyone for your happiness \"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"this humidity is not sitting well with me at all  needacinschool \
+d\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"do u know whats creepily i hate cheesecake its cake with cheese \
+in front of it\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"thanks got it at walmart\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"still havent seen super8 every 88th checkin wins a free movie \
+ticket 45347 checkins so far\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"rt congratulations to the for advancing in the stanleycup \
+playoffs they defeated the sens in a 43 series\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"hey hey hey  can i meet chaaaa \"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"ghost hunters makes me cry ( 3\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"whos going to the ovw show tomorrow your team dominoski will be \
+in the house first brew after the show is on me\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"just waking up but therave last night though\"\>", "}"}],
+    ",", 
+   RowBox[{"{", "\<\"at six flags\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"thanks tom\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"theyre not applauding because you dont have a button\"\>", "}"}],
+    ",", 
+   RowBox[{
+   "{", "\<\"\[AHat]\[LeftGuillemet] im not mad it just sucks that i cant \
+show you off\[AHat]\[RightGuillemet] this\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"im at little league majors try outs in\"\>", "}"}], ",", 
+   RowBox[{"{", "\<\"where my meatballs at and naomi )\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"doing some cufon testing and implementation in wordpress what \
+the fouc dyall think of cufon\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"lo mejor it was cool experiencing work through the eyes of an \
+excited teen\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"me the only b word u should call a girl is beautful colin or a \
+butterfly\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"i just think that the zooming is overused it needs to be done \
+tastefully and its not the point\"\>", "}"}], ",", 
+   RowBox[{
+   "{", "\<\"if you have firefox or google chrome type in \\\"let it snow\\\" \
+into google today\"\>", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7078580788414392`*^9, 3.707858189213235*^9, 
+  3.7078584814108953`*^9, 3.707858599333069*^9, 3.7078587305537066`*^9, 
+  3.707858882386702*^9},ExpressionUUID->"a3fe68ed-43ce-458e-8a61-\
+b0eb68f42c50"]
+}, Open  ]]
+},
+WindowSize->{823, 607},
+WindowMargins->{{Automatic, -50}, {Automatic, 8}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 27, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[583, 22, 347, 8, 30, "Input", "ExpressionUUID" -> \
+"007aa2ed-9a1b-4f91-b07e-bb05e521da4b"],
+Cell[933, 32, 322, 6, 30, "Output", "ExpressionUUID" -> \
+"a4d4af3e-99e6-46da-a892-bf9e9dc6f002"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1292, 43, 351, 6, 30, "Input", "ExpressionUUID" -> \
+"ae942c53-fae0-4438-8e1b-993538dce37d"],
+Cell[1646, 51, 257, 5, 30, "Output", "ExpressionUUID" -> \
+"5af0df51-8f6e-44b3-bc8c-3353547420da"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1940, 61, 523, 13, 30, "Input", "ExpressionUUID" -> \
+"bfb39d5e-552f-4636-a7ba-8c6568282301"],
+Cell[2466, 76, 343, 6, 38, "Output", "ExpressionUUID" -> \
+"e6b5900e-6671-4f23-b0ef-4351411f7492"]
+}, Open  ]],
+Cell[2824, 85, 253, 6, 30, "Input", "ExpressionUUID" -> \
+"d0afa176-41cd-41b3-9653-f239486de16d"],
+Cell[3080, 93, 1404, 27, 90, "Input", "ExpressionUUID" -> \
+"4e88a61f-5949-4076-ace2-4e9c80411f13"],
+Cell[4487, 122, 2093, 46, 202, "Input", "ExpressionUUID" -> \
+"54096ba1-b11e-42eb-8494-a74ad8ad4936"],
+Cell[6583, 170, 631, 13, 50, "Input", "ExpressionUUID" -> \
+"5d660290-a8ae-412a-a9f8-c7ed2d53d9c3"],
+Cell[CellGroupData[{
+Cell[7239, 187, 239, 5, 30, "Input", "ExpressionUUID" -> \
+"ce44d1e7-623d-44d7-80db-bd9a29c387bf"],
+Cell[7481, 194, 154, 3, 30, "Output", "ExpressionUUID" -> \
+"115acf17-1a3a-4272-86d8-da1d04151c2f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7672, 202, 196, 4, 30, "Input", "ExpressionUUID" -> \
+"8537cb1a-9951-40c7-a15f-94b19c0ded46"],
+Cell[7871, 208, 15412, 336, 2995, "Output", "ExpressionUUID" -> \
+"7e115886-43ab-4fb3-bf58-dafb7c367b61"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23320, 549, 244, 7, 30, "Input", "ExpressionUUID" -> \
+"42f1d1db-6a71-478c-ab81-feba040e22b6"],
+Cell[23567, 558, 11381, 244, 1931, "Output", "ExpressionUUID" -> \
+"a3fe68ed-43ce-458e-8a61-b0eb68f42c50"]
+}, Open  ]]
+}
+]
+*)
+
