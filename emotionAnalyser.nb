@@ -1,0 +1,731 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     28011,        723]
+NotebookOptionsPosition[     26343,        677]
+NotebookOutlinePosition[     26687,        692]
+CellTagsIndexPosition[     26644,        689]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"sensitivity", "[", "value_", "]"}], ":=", "\n", 
+   "\[IndentingNewLine]", "\t\t", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"Between", "[", 
+      RowBox[{"value", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", " ", 
+         RowBox[{"-", "0.7"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<terror\>\"", ",", 
+       RowBox[{
+        RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+        "\"\<Torquoise\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     "\t\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"Between", "[", 
+        RowBox[{"value", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "0.69"}], ",", " ", 
+           RowBox[{"-", "0.4"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<fear\>\"", ",", 
+         RowBox[{
+          RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+          "\"\<Sea green\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       "\t\t", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"Between", "[", 
+          RowBox[{"value", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "0.39"}], ",", " ", 
+             RowBox[{"-", "0.1"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<apprehension\>\"", ",", 
+           RowBox[{
+            RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+            "\"\<Light Sea green\>\"", "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", "\t\t", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"Between", "[", 
+            RowBox[{"value", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "0.09"}], ",", " ", "0.09"}], "}"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<neutral\>\"", ",", 
+             RowBox[{
+              RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+              "\"\<White\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"Between", "[", 
+              RowBox[{"value", ",", 
+               RowBox[{"{", 
+                RowBox[{"0.1", ",", " ", "0.39"}], "}"}]}], "]"}], ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"\"\<annoyance\>\"", ",", 
+               RowBox[{
+                RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                "\"\<Pink\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"Between", "[", 
+                RowBox[{"value", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0.4", ",", " ", "0.69"}], "}"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<anger\>\"", ",", 
+                 RowBox[{
+                  RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                  "\"\<Light Red\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"Between", "[", 
+                  RowBox[{"value", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0.7", ",", " ", "1"}], "}"}]}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<rage\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<Dark red\>\"", "]"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<neutral\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<white\>\"", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+            "]"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], "\n", "\t", "\n", 
+  "\t", "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"attention", "[", "value_", "]"}], ":=", "\n", "\n", "\t\t", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"Between", "[", 
+      RowBox[{"value", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", " ", 
+         RowBox[{"-", "0.7"}]}], "}"}]}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<amazement\>\"", ",", 
+       RowBox[{
+        RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+        "\"\<deep blue\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     "\t\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"Between", "[", 
+        RowBox[{"value", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "0.74"}], ",", " ", 
+           RowBox[{"-", "0.5"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<surprise\>\"", ",", 
+         RowBox[{
+          RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+          "\"\<light blue\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       "\t\t", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"Between", "[", 
+          RowBox[{"value", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "0.49"}], ",", " ", 
+             RowBox[{"-", "0.25"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<distraction\>\"", ",", 
+           RowBox[{
+            RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+            "\"\<sky blue\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         "\t\t", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"Between", "[", 
+            RowBox[{"value", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "0.24"}], ",", " ", "0.24"}], "}"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<neutral\>\"", ",", 
+             RowBox[{
+              RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+              "\"\<white\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"Between", "[", 
+              RowBox[{"value", ",", 
+               RowBox[{"{", 
+                RowBox[{"0.25", ",", " ", "0.49"}], "}"}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"\"\<interest\>\"", ",", 
+               RowBox[{
+                RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                "\"\<Light Orange\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"Between", "[", 
+                RowBox[{"value", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0.5", ",", " ", "0.74"}], "}"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<anticipation\>\"", ",", 
+                 RowBox[{
+                  RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                  "\"\<Orange\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"Between", "[", 
+                  RowBox[{"value", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0.75", ",", " ", "1"}], "}"}]}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<vigilance\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<Bright Orange\>\"", "]"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<neutral\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<white\>\"", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+            "]"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], "\n", "\n", "\t", 
+  "\n", "\t"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pleasantness", "[", "value_", "]"}], ":=", "\n", 
+   "\[IndentingNewLine]", "\t\t", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"Between", "[", 
+      RowBox[{"value", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", " ", 
+         RowBox[{"-", "0.75"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<grief\>\"", ",", 
+       RowBox[{
+        RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+        "\"\<Deep indigo\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     "\t\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"Between", "[", 
+        RowBox[{"value", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "0.74"}], ",", " ", 
+           RowBox[{"-", "0.5"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<sadness\>\"", ",", 
+         RowBox[{
+          RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+          "\"\<Indigo\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       "\t\t", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"Between", "[", 
+          RowBox[{"value", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "0.49"}], ",", " ", 
+             RowBox[{"-", "0.25"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<pensiveness\>\"", ",", 
+           RowBox[{
+            RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+            "\"\<Magenta\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         "\t\t", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"Between", "[", 
+            RowBox[{"value", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "0.24"}], ",", " ", "0.24"}], "}"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<neutral\>\"", ",", 
+             RowBox[{
+              RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+              "\"\<white\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"Between", "[", 
+              RowBox[{"value", ",", 
+               RowBox[{"{", 
+                RowBox[{"0.25", ",", " ", "0.49"}], "}"}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"\"\<serenity\>\"", ",", 
+               RowBox[{
+                RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                "\"\<Light yellow\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"Between", "[", 
+                RowBox[{"value", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0.5", ",", " ", "0.74"}], "}"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<joy\>\"", ",", 
+                 RowBox[{
+                  RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                  "\"\<Yellow\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"Between", "[", 
+                  RowBox[{"value", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0.75", ",", " ", "1"}], "}"}]}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<ecstasy\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<Bright Yellow\>\"", "]"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<neutral\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<white\>\"", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+            "]"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], "\n", "\n", "\t", 
+  "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"aptitude", "[", "value_", "]"}], ":=", "\n", 
+   "\[IndentingNewLine]", "\t\t", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"Between", "[", 
+      RowBox[{"value", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", " ", 
+         RowBox[{"-", "0.75"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<loathing\>\"", ",", 
+       RowBox[{
+        RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+        "\"\<Deep purple\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     "\t\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"Between", "[", 
+        RowBox[{"value", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "0.74"}], ",", " ", 
+           RowBox[{"-", "0.5"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<digust\>\"", ",", 
+         RowBox[{
+          RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+          "\"\<Purple\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       "\t\t", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"Between", "[", 
+          RowBox[{"value", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "0.49"}], ",", " ", 
+             RowBox[{"-", "0.25"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<boredom\>\"", ",", 
+           RowBox[{
+            RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+            "\"\<Purple\>\"", "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         "\t\t", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"Between", "[", 
+            RowBox[{"value", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "0.24"}], ",", " ", "0.24"}], "}"}]}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<neutral\>\"", ",", 
+             RowBox[{
+              RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+              "\"\<white\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"Between", "[", 
+              RowBox[{"value", ",", 
+               RowBox[{"{", 
+                RowBox[{"0.25", ",", " ", "0.49"}], "}"}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"\"\<acceptance\>\"", ",", 
+               RowBox[{
+                RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                "\"\<Light green\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"Between", "[", 
+                RowBox[{"value", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0.5", ",", " ", "0.74"}], "}"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<trust\>\"", ",", 
+                 RowBox[{
+                  RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                  "\"\<Green\>\"", "]"}]}], "}"}], ",", "\n", "\t\t", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"Between", "[", 
+                  RowBox[{"value", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0.75", ",", " ", "1"}], "}"}]}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<admiration\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<Bright Green\>\"", "]"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<neutral\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+                    "\"\<white\>\"", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+            "]"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], "\n"}], "\n", 
+ RowBox[{"\t"}]}], "Code",
+ CellChangeTimes->{{3.708083534364465*^9, 3.7080835401823697`*^9}, {
+   3.7080836120190554`*^9, 3.708083716123236*^9}, {3.7080837998839345`*^9, 
+   3.7080839080397444`*^9}, {3.7080839707886815`*^9, 
+   3.7080840356612673`*^9}, {3.708084087519252*^9, 3.70808409369484*^9}, {
+   3.7080841584297104`*^9, 3.7080842662769165`*^9}, {3.7080844101975927`*^9, 
+   3.7080844617216845`*^9}, {3.7080855548230886`*^9, 3.708085561117725*^9}, {
+   3.7080855964820166`*^9, 3.7080856814032526`*^9}, {3.708085715863697*^9, 
+   3.708085742696436*^9}, 3.708085814558757*^9, 3.708085849450595*^9, {
+   3.70808591605239*^9, 3.70808593626364*^9}, {3.7080860686910276`*^9, 
+   3.708086174125064*^9}, {3.708086402869873*^9, 3.7080865575557194`*^9}, {
+   3.708086604576861*^9, 3.7080866314160166`*^9}, {3.7080868725561647`*^9, 
+   3.7080868777930994`*^9}, {3.70808692809266*^9, 3.7080872057422276`*^9}, {
+   3.708087274796301*^9, 3.708087356548728*^9}, {3.708087387785971*^9, 
+   3.7080875318657846`*^9}, {3.708087703213559*^9, 3.708087869198471*^9}, {
+   3.708087953322343*^9, 3.708088037717928*^9}, {3.7080881777662764`*^9, 
+   3.708088265861459*^9}, {3.708088315411321*^9, 3.7080883908268404`*^9}, {
+   3.7080912333881607`*^9, 3.7080913127850103`*^9}, {3.708091450810892*^9, 
+   3.7080915831023183`*^9}, {3.7080916174716187`*^9, 
+   3.7080916669939137`*^9}, {3.7080917605752397`*^9, 3.708091794399591*^9}, {
+   3.7080928216869183`*^9, 3.7080928331495256`*^9}, {3.7080931779588823`*^9, 
+   3.7080932933129086`*^9}, {3.708093468726488*^9, 3.7080935141792483`*^9}, {
+   3.7080936353700757`*^9, 3.7080936699660835`*^9}, {3.708093808257283*^9, 
+   3.7080940214311037`*^9}, {3.708098223766079*^9, 3.7080982576587644`*^9}, {
+   3.7080982914489985`*^9, 3.7080983127313337`*^9}, {3.7080984973251085`*^9, 
+   3.7080985831820364`*^9}, {3.7080986262774143`*^9, 3.708098692499112*^9}, {
+   3.708098860323341*^9, 
+   3.7080992535910034`*^9}},ExpressionUUID->"e9af2506-9af3-4daf-8d93-\
+8ac3e97381f4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Tests", " ", "*)"}], "\n", "\n", 
+  RowBox[{
+   RowBox[{"analyse", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "pleasantnessV_", ",", "attentionV_", ",", "sensitivityV_", ",", 
+      "aptitudeV_"}], "}"}], "]"}], ":=", " ", "\n", "\t", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "pleasantA", ",", " ", "attendA", ",", " ", "sensitiveA", ",", " ", 
+       "aptitudeA"}], "}"}], ",", "\n", "\t", 
+     RowBox[{
+      RowBox[{"pleasantA", " ", "=", " ", 
+       RowBox[{"pleasantness", "[", "pleasantnessV", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"attendA", " ", "=", " ", 
+       RowBox[{"attention", "[", "attentionV", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"sensitiveA", " ", "=", " ", 
+       RowBox[{"sensitivity", "[", "sensitivityV", "]"}]}], ";", "\n", "\t", 
+      RowBox[{"aptitudeA", " ", "=", " ", 
+       RowBox[{"aptitude", "[", "aptitudeV", "]"}]}], ";", 
+      RowBox[{"{", 
+       RowBox[{
+       "pleasantA", ",", " ", "attendA", ",", " ", "sensitiveA", ",", " ", 
+        "aptitudeA"}], "}"}]}]}], "]"}]}]}]], "Code",
+ CellChangeTimes->{{3.708091947057273*^9, 3.7080919647020082`*^9}, {
+  3.7080920266586027`*^9, 3.708092137187557*^9}, {3.708092186360259*^9, 
+  3.7080922455380955`*^9}, {3.7080922810692267`*^9, 3.708092594403264*^9}, {
+  3.708092700600006*^9, 
+  3.708092710611067*^9}},ExpressionUUID->"8689b049-de91-4bbb-967c-\
+3173e9a2143e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  RowBox[{"quads", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", "4"}], "]"}], ",", " ", 
+     "4"}], "]"}]}]}]], "Input",ExpressionUUID->"a3afd904-4f63-4f2f-97a5-\
+931e4383d774"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0.23268579188067884`", ",", "0.8405083609852202`", ",", 
+     RowBox[{"-", "0.20353647861334867`"}], ",", 
+     RowBox[{"-", "0.6599699171922726`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.03187928626059433`"}], ",", "0.3989679414491585`", ",", 
+     "0.4244061535092216`", ",", "0.184912296426202`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.9263057892038682`"}], ",", "0.7565211985661735`", ",", 
+     RowBox[{"-", "0.1482901543608386`"}], ",", "0.433759569076583`"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.24001173649251362`"}], ",", "0.28302494618576635`", ",", 
+     RowBox[{"-", "0.9478515315874083`"}], ",", "0.9588658811525885`"}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7080927154849863`*^9, 
+  3.7080940796989875`*^9},ExpressionUUID->"b8c35e37-202b-4ce4-a56c-\
+d84d8c52c37e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"quads", "[", 
+  RowBox[{"[", "1", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.708092725573455*^9, 
+  3.7080927329867835`*^9}},ExpressionUUID->"ba7e67d1-29d6-4fb4-b505-\
+1873ffd14521"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.17816509713320272`"}], ",", "0.7937941243463658`", ",", 
+   RowBox[{"-", "0.3939324297272635`"}], ",", 
+   RowBox[{"-", "0.9176470787093667`"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7080927360261965`*^9},ExpressionUUID->"943255d9-4381-4b44-b3b1-\
+b6959b324c77"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"analyse", "[", "#", "]"}], "&"}], "/@", "quads"}]], "Input",
+ CellChangeTimes->{{3.7080926022482862`*^9, 3.7080926152924533`*^9}, {
+  3.708092741344026*^9, 3.708092752629364*^9}, {3.708094144889411*^9, 
+  3.7080942253606553`*^9}},ExpressionUUID->"c08c7d75-89a7-43fc-9547-\
+c201bdd95152"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\<\"neutral\"\>", ",", "\<\"white\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"vigilance\"\>", ",", "\<\"Orange\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"apprehension\"\>", ",", "\<\"washedout torquoise\"\>"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"digust\"\>", ",", "\<\"light purple\"\>"}], "}"}]}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\<\"neutral\"\>", ",", "\<\"white\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"interest\"\>", ",", "\<\"washedout orange\"\>"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"anger\"\>", ",", "\<\"light red\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"neutral\"\>", ",", "\<\"white\"\>"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\<\"grief\"\>", ",", "\<\"deep indigo\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"vigilance\"\>", ",", "\<\"Orange\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"apprehension\"\>", ",", "\<\"washedout torquoise\"\>"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"acceptance\"\>", ",", "\<\"washedout green\"\>"}], "}"}]}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\<\"neutral\"\>", ",", "\<\"white\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"interest\"\>", ",", "\<\"washedout orange\"\>"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"terror\"\>", ",", "\<\"Torquoise\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"admiration\"\>", ",", "\<\"bright\"\>"}], "}"}]}], "}"}]}],
+   "}"}]], "Output",
+ CellChangeTimes->{3.708092617576502*^9, 3.708092753526761*^9, 
+  3.708094084397269*^9, 3.70809416176134*^9, 3.708094192220935*^9, 
+  3.7080942293328285`*^9},ExpressionUUID->"cd9190ab-291c-427e-8cc4-\
+977bd82b094b"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7080921153582926`*^9, 
+  3.7080921160093465`*^9}},ExpressionUUID->"18dad71d-3ab1-4152-a3f1-\
+9433ef7495be"],
+
+Cell[BoxData[
+ RowBox[{"sensitivity", "[", "0.93932", "]"}]], "Input",
+ CellChangeTimes->{{3.708093527224498*^9, 
+  3.7080936114371557`*^9}},ExpressionUUID->"68dc5e46-2d0e-43a4-b341-\
+bc28f3d2686e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Interpreter", "[", "\"\<Color\>\"", "]"}], "[", 
+  "\"\<very light yellow\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.7080979757316947`*^9, 3.708098002726718*^9}, {
+  3.70809805231083*^9, 3.7080980973660097`*^9}, {3.7080981903589444`*^9, 
+  3.708098191647619*^9}},ExpressionUUID->"49ecedea-15da-488a-8eb6-\
+28760a6e9038"],
+
+Cell[BoxData[
+ InterpretationBox[
+  ButtonBox[
+   TooltipBox[
+    GraphicsBox[{
+      {GrayLevel[0], RectangleBox[{0, 0}]}, 
+      {GrayLevel[0], RectangleBox[{1, -1}]}, 
+      {RGBColor[1., 1., 0.6], RectangleBox[{0, -1}, {2, 1}]}},
+     AspectRatio->1,
+     Frame->True,
+     FrameStyle->RGBColor[0.6666666666666667, 0.6666666666666667, 0.4],
+     FrameTicks->None,
+     ImageSize->
+      Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
+        AbsoluteCurrentValue[Magnification]}],
+     PlotRangePadding->None],
+    "RGBColor[1., 1., 0.6]"],
+   Appearance->None,
+   BaseStyle->{},
+   BaselinePosition->Baseline,
+   ButtonFunction:>With[{Typeset`box$ = EvaluationBox[]}, 
+     If[
+      Not[
+       AbsoluteCurrentValue["Deployed"]], 
+      SelectionMove[Typeset`box$, All, Expression]; 
+      FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+      FrontEnd`Private`$ColorSelectorInitialColor = RGBColor[1., 1., 0.6]; 
+      FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+      MathLink`CallFrontEnd[
+        FrontEnd`AttachCell[Typeset`box$, 
+         FrontEndResource["RGBColorValueSelector"], {0, {Left, Bottom}}, {
+         Left, Top}, 
+         "ClosingActions" -> {
+          "SelectionDeparture", "ParentChanged", "EvaluatorQuit"}]]]],
+   DefaultBaseStyle->{},
+   Evaluator->Automatic,
+   Method->"Preemptive"],
+  RGBColor[1., 1., 0.6],
+  Editable->False,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.7080980053593035`*^9, {3.708098067746787*^9, 3.7080980872968693`*^9}, 
+   3.7080981978168344`*^9},ExpressionUUID->"479d75fd-3350-4899-8d70-\
+3e405e71f689"]
+}, Open  ]],
+
+Cell[BoxData["Interpreter"], "Input",
+ CellChangeTimes->{{3.708098008145702*^9, 
+  3.708098014885442*^9}},ExpressionUUID->"65557287-8232-4169-973f-\
+7a9b798aaf2b"]
+},
+WindowSize->{1366, 695},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 27, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[561, 20, 17533, 419, 879, "Code", "ExpressionUUID" -> \
+"e9af2506-9af3-4daf-8d93-8ac3e97381f4"],
+Cell[18097, 441, 1442, 33, 177, "Code", "ExpressionUUID" -> \
+"8689b049-de91-4bbb-967c-3173e9a2143e"],
+Cell[CellGroupData[{
+Cell[19564, 478, 357, 11, 50, "Input", "ExpressionUUID" -> \
+"a3afd904-4f63-4f2f-97a5-931e4383d774"],
+Cell[19924, 491, 950, 23, 30, "Output", "ExpressionUUID" -> \
+"b8c35e37-202b-4ce4-a56c-d84d8c52c37e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20911, 519, 209, 5, 30, "Input", "ExpressionUUID" -> \
+"ba7e67d1-29d6-4fb4-b505-1873ffd14521"],
+Cell[21123, 526, 327, 8, 30, "Output", "ExpressionUUID" -> \
+"943255d9-4381-4b44-b3b1-b6959b324c77"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21487, 539, 334, 7, 30, "Input", "ExpressionUUID" -> \
+"c08c7d75-89a7-43fc-9547-c201bdd95152"],
+Cell[21824, 548, 1987, 53, 88, "Output", "ExpressionUUID" -> \
+"cd9190ab-291c-427e-8cc4-977bd82b094b"]
+}, Open  ]],
+Cell[23826, 604, 156, 3, 30, "Input", "ExpressionUUID" -> \
+"18dad71d-3ab1-4152-a3f1-9433ef7495be"],
+Cell[23985, 609, 198, 4, 30, "Input", "ExpressionUUID" -> \
+"68dc5e46-2d0e-43a4-b341-bc28f3d2686e"],
+Cell[CellGroupData[{
+Cell[24208, 617, 357, 7, 30, InheritFromParent, "ExpressionUUID" -> \
+"49ecedea-15da-488a-8eb6-28760a6e9038"],
+Cell[24568, 626, 1593, 43, 30, "Output", "ExpressionUUID" -> \
+"479d75fd-3350-4899-8d70-3e405e71f689"]
+}, Open  ]],
+Cell[26176, 672, 163, 3, 30, "Input", "ExpressionUUID" -> \
+"65557287-8232-4169-973f-7a9b798aaf2b"]
+}
+]
+*)
+

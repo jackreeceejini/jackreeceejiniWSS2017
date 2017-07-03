@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     14227,        389]
-NotebookOptionsPosition[     12313,        339]
-NotebookOutlinePosition[     12657,        354]
-CellTagsIndexPosition[     12614,        351]
+NotebookDataLength[     14301,        389]
+NotebookOptionsPosition[     12521,        343]
+NotebookOutlinePosition[     12865,        358]
+CellTagsIndexPosition[     12822,        355]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -215,7 +215,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"readtweets", "[", 
+  RowBox[{"readtweets1", "[", 
    RowBox[{"inFileName_", ",", "outFileName_"}], "]"}], ":=", 
   "\[IndentingNewLine]", "\t", 
   RowBox[{"Module", "[", 
@@ -225,8 +225,8 @@ Cell[BoxData[
       RowBox[{"inStreamObject", " ", "=", "  ", 
        RowBox[{"OpenRead", "[", "inFileName", "]"}]}], ",", " ", 
       RowBox[{"outStreamObject", "=", 
-       RowBox[{"OpenWrite", "[", "outFileName", "]"}]}], ",", " ", "line", 
-      ",", " ", "analysed", ",", " ", "rule"}], "}"}], ",", 
+       RowBox[{"OpenWrite", "[", "outFileName", "]"}]}], ",", " ", "datalist",
+       ",", " ", "analysed", ",", " ", "rule"}], "}"}], ",", 
     "\[IndentingNewLine]", "\t\t", 
     RowBox[{
      RowBox[{"If", "[", 
@@ -234,23 +234,34 @@ Cell[BoxData[
        RowBox[{"inStreamObject", " ", "=!=", " ", "$Failed"}], ",", 
        "\[IndentingNewLine]", "\t\t", 
        RowBox[{
-        RowBox[{"line", " ", "=", " ", 
-         RowBox[{"ReadLine", "[", "inStreamObject", "]"}]}], ";", 
-        "\[IndentingNewLine]", "\t\t", 
+        RowBox[{"datalist", " ", "=", " ", 
+         RowBox[{"ReadList", "[", 
+          RowBox[{"inStreamObject", ",", "Record", ",", "100000"}], "]"}]}], 
+        ";", "\[IndentingNewLine]", "\t\t", 
         RowBox[{"While", "[", 
          RowBox[{
-          RowBox[{"line", " ", "=!=", " ", "EndOfFile"}], ",", "\n", "\t\t", 
+          RowBox[{
+           RowBox[{"datalist", "[", 
+            RowBox[{"-", "1"}], "]"}], " ", "=!=", " ", "EndOfFile"}], ",", 
+          "\n", "\t\t", 
           RowBox[{
            RowBox[{"$i", "++"}], ";", "\n", "\t\t", 
            RowBox[{"analysed", " ", "=", " ", 
-            RowBox[{"myReplaceList", "[", "line", "]"}]}], ";", "\n", "\t\t", 
+            RowBox[{"Map", "[", 
+             RowBox[{"myReplaceList", ",", "datalist"}], "]"}]}], ";", "\n", 
+           "\t\t", 
            RowBox[{"rule", " ", "=", " ", 
-            RowBox[{"line", " ", "\[Rule]", " ", "analysed"}]}], ";", 
+            RowBox[{"Thread", "[", 
+             RowBox[{"Rule", "[", 
+              RowBox[{"datalist", ",", "analysed"}], "]"}], "]"}]}], ";", 
            "\[IndentingNewLine]", "\t\t", 
-           RowBox[{"WriteLine", "[", 
-            RowBox[{"outStreamObject", ",", " ", "rule"}], "]"}], ";", 
-           "\[IndentingNewLine]", "\t\t", 
-           RowBox[{"line", " ", "=", " ", 
+           RowBox[{"Map", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"WriteString", "[", 
+               RowBox[{"outStreamObject", ",", " ", "#"}], "]"}], "&"}], ",", 
+             "rule"}], "]"}], ";", "\[IndentingNewLine]", "\t\t", 
+           RowBox[{"datalist", " ", "=", " ", 
             RowBox[{"ReadLine", "[", "inStreamObject", "]"}]}]}]}], 
          "\[IndentingNewLine]", "\t\t", "]"}]}]}], "\[IndentingNewLine]", 
       "\t\t", "]"}], ";", 
@@ -265,8 +276,9 @@ Cell[BoxData[
    3.7078656420956955`*^9}, {3.707865796087932*^9, 3.707865802089919*^9}, {
    3.707866586889321*^9, 3.707866628025176*^9}, {3.707867766236761*^9, 
    3.7078677713985653`*^9}, {3.7078679262592535`*^9, 
-   3.7078679304869175`*^9}, {3.707867970546816*^9, 
-   3.7078679763665266`*^9}},ExpressionUUID->"bb8e3bc3-ab6e-4927-918c-\
+   3.7078679304869175`*^9}, {3.707867970546816*^9, 3.7078679763665266`*^9}, {
+   3.707907429369653*^9, 
+   3.707907430994771*^9}},ExpressionUUID->"bb8e3bc3-ab6e-4927-918c-\
 e19caa936463"],
 
 Cell[CellGroupData[{
@@ -312,8 +324,6 @@ Cell[BoxData[
 f4c4dd90f3f7"]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"start", "=", "Now"}], ";"}], "\[IndentingNewLine]", 
@@ -329,13 +339,7 @@ Cell[BoxData[{
    3.707865514806467*^9}, {3.7078679793984175`*^9, 3.707867983224543*^9}, {
    3.7078683946236477`*^9, 
    3.707868398949385*^9}},ExpressionUUID->"13ac80c7-0061-41a3-836d-\
-a97205ee5d0a"],
-
-Cell[BoxData["$Aborted"], "Output",
- CellChangeTimes->{3.7078680520910254`*^9, 3.7078687058982368`*^9, 
-  3.7079024338416843`*^9},ExpressionUUID->"fce78190-9dbc-4813-9c95-\
-990afb8dc64c"]
-}, Open  ]]
+a97205ee5d0a"]
 },
 WindowSize->{1366, 695},
 WindowMargins->{{-8, Automatic}, {Automatic, -8}},
@@ -373,24 +377,20 @@ Cell[6498, 195, 237, 5, 30, "Input", "ExpressionUUID" -> \
 Cell[6738, 202, 468, 10, 30, "Output", "ExpressionUUID" -> \
 "208db27c-c061-4368-9def-9e7c5af0f7db"]
 }, Open  ]],
-Cell[7221, 215, 2591, 54, 267, "Code", "ExpressionUUID" -> \
+Cell[7221, 215, 3023, 66, 267, "Code", "ExpressionUUID" -> \
 "bb8e3bc3-ab6e-4927-918c-e19caa936463"],
 Cell[CellGroupData[{
-Cell[9837, 273, 587, 14, 69, "Input", "ExpressionUUID" -> \
+Cell[10269, 285, 587, 14, 69, "Input", "ExpressionUUID" -> \
 "9ec58443-459b-4106-8edf-c3eda2e3223a"],
-Cell[10427, 289, 254, 5, 33, "Output", "ExpressionUUID" -> \
+Cell[10859, 301, 254, 5, 33, "Output", "ExpressionUUID" -> \
 "7af63029-80c0-4e59-9229-dffa68f28da8"],
-Cell[10684, 296, 287, 6, 30, "Output", "ExpressionUUID" -> \
+Cell[11116, 308, 287, 6, 30, "Output", "ExpressionUUID" -> \
 "466e4675-3d2e-4936-8473-72ae3d352056"],
-Cell[10974, 304, 328, 7, 39, "Output", "ExpressionUUID" -> \
+Cell[11406, 316, 328, 7, 39, "Output", "ExpressionUUID" -> \
 "bf8a90fc-fda0-42a1-b88d-f4c4dd90f3f7"]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[11339, 316, 768, 15, 69, "Input", "ExpressionUUID" -> \
-"13ac80c7-0061-41a3-836d-a97205ee5d0a"],
-Cell[12110, 333, 187, 3, 30, "Output", "ExpressionUUID" -> \
-"fce78190-9dbc-4813-9c95-990afb8dc64c"]
-}, Open  ]]
+Cell[11749, 326, 768, 15, 69, "Input", "ExpressionUUID" -> \
+"13ac80c7-0061-41a3-836d-a97205ee5d0a"]
 }
 ]
 *)
