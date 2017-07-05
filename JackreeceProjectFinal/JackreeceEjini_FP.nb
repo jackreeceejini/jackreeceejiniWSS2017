@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    365408,       6451]
-NotebookOptionsPosition[     47344,        994]
-NotebookOutlinePosition[    360140,       6328]
-CellTagsIndexPosition[    359844,       6316]
+NotebookDataLength[    368350,       6491]
+NotebookOptionsPosition[     50283,       1034]
+NotebookOutlinePosition[    363079,       6368]
+CellTagsIndexPosition[    362783,       6356]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -507,19 +507,40 @@ Cell["2 min presentation", "TemplateSection",
 ff32b660a5bf"],
 
 Cell["\<\
-My project is about Emotion categorization. A scoring system was built that \
-analysed tweets and scored them based on data and models from the Sentic net \
-project. Using the scored tweets, four classifiers were built using the \
-Markov method and a web form that accepts free form text was also built to \
-accept statements from users and present them with a response containing four \
-emotion tags from a collection of about 24 emotions.\
+My project is about Emotion categorization of text. Its basically a system \
+for extracting emotion related information from free form text input from our \
+web interface. My project is important because understanding affective \
+information available in a particular body of text can give a group certain \
+advantages in the marketplace, from understanding user reviews of products to \
+eventually in the future giving AI the ability to understand human emotions \
+and also help them generate valid emotional response during human \
+interactions. Current sentiment analysis classifies text along two \
+categories, either as negative or as positive, while in some cases this might \
+be enough it is really just touching the surface of a much more complex \
+system of affective information embedded within text. We choose to do this \
+project because many entities doing emotion classification of user generated \
+content are not keeping this technology in the open, so it makes sense to \
+build ones custom system. Our approach was quite simple, we took pre-modeled \
+data from the Sentic net api and built a pattern matcher for finding all \
+cases of some affective concept in a body of tweets, The mapping between \
+affect concept and a 4 dimensional vector representing the affective \
+information numerically with a range of {-1,1} was used as the scoring system \
+for concepts matched from the tweets. Using the scored tweets, four \
+classifiers were built using the Markov method, we query this classifiers and \
+get a response containing four emotion tags from a collection of about 24 \
+emotions.\
 \>", "Text",
  CellChangeTimes->{{3.7081908060440426`*^9, 3.7081909173209696`*^9}, {
-  3.7081909686177387`*^9, 3.708191037298724*^9}, {3.708191206896624*^9, 
-  3.708191250697898*^9}, {3.708191308525421*^9, 3.708191339049859*^9}, {
-  3.708191438258825*^9, 
-  3.7081914679430504`*^9}},ExpressionUUID->"4c6b04c5-8035-4ec9-81cf-\
-53e44e0e487e"],
+   3.7081909686177387`*^9, 3.708191037298724*^9}, {3.708191206896624*^9, 
+   3.708191250697898*^9}, {3.708191308525421*^9, 3.708191339049859*^9}, {
+   3.708191438258825*^9, 3.7081914679430504`*^9}, {3.7082498206905985`*^9, 
+   3.7082498760234337`*^9}, {3.708249926828467*^9, 3.708250015226927*^9}, {
+   3.708250051804207*^9, 3.708250078069868*^9}, {3.7082501081320553`*^9, 
+   3.7082504266324153`*^9}, {3.7082504707417765`*^9, 3.7082508375913086`*^9}, 
+   3.7082508686966143`*^9, {3.7082509074772716`*^9, 3.708250967304914*^9}, {
+   3.708251035576217*^9, 3.7082510816020985`*^9}, {3.7082511499161153`*^9, 
+   3.7082511803676186`*^9}},ExpressionUUID->"79c7172c-5737-40f7-8979-\
+259e2d4b233b"],
 
 Cell["", "Text",
  CellChangeTimes->{{3.708110518054635*^9, 
@@ -811,6 +832,22 @@ Cell["Conclusions in Detail", "TemplateSubsection",
 65d46bf0f9c2"],
 
 Cell["\<\
+The project experienced some challenges most of which were related to \
+efficiently using the pattern matcher to process millions of tweets from a \
+text corpus. Tradeoffs were made between how many files to read at a time to \
+be able to have enough scored tweets to feed into the Markov classifier. We \
+initially tried loading everything into memory but ran out of memory on my \
+computer and we requested for a loaner machine which was faster to do the \
+same job, but it turned out that I/O was the major bottleneck slowing the \
+scoring system. And most of the loaners were taken so I had to wait a couple \
+of days to get one. After benchmarking the process on the faster loaner \
+computer after it was received I found out it would take close to a month to \
+process the entire tweet corpus, this is totally ignoring the news data \
+corpus and the blog corpus. Much optimization would not make this process \
+possible, an SSD based system would add some advantage but not very much I \
+think. 
+We basically decided it was better to read 10 thousand tweets at a time and \
+process it in memory, it took about 45 minutes to process a single batch. 
 Making it possible to compute affective information from text and multi-media \
 is a task that cannot be ignored because the future of AI and Humanity hangs \
 on our ability to understand emotion and accurately compute it with the hope \
@@ -830,11 +867,14 @@ techniques to deal with the problem using every tool from Machine learning to \
 Big data analysis.\
 \>", "Text",
  CellChangeTimes->{{3.708204300769518*^9, 3.7082043386105547`*^9}, {
-  3.7082043918746867`*^9, 3.7082046044754457`*^9}, {3.708204666904319*^9, 
-  3.7082049944419208`*^9}, {3.708205812303441*^9, 3.708205813006606*^9}, {
-  3.7082059119363017`*^9, 3.708205983795764*^9}, {3.7082078793802032`*^9, 
-  3.7082078816099195`*^9}},ExpressionUUID->"d46f2618-3795-4b49-979e-\
-aba928523e5c"]
+   3.7082043918746867`*^9, 3.7082046044754457`*^9}, {3.708204666904319*^9, 
+   3.7082049944419208`*^9}, {3.708205812303441*^9, 3.708205813006606*^9}, {
+   3.7082059119363017`*^9, 3.708205983795764*^9}, {3.7082078793802032`*^9, 
+   3.7082078816099195`*^9}, 3.708251247461727*^9, {3.7082513488223157`*^9, 
+   3.7082518149146385`*^9}, {3.708251939711604*^9, 3.7082519579330864`*^9}, {
+   3.708252070736124*^9, 
+   3.7082520712752085`*^9}},ExpressionUUID->"5bbfdf1d-3e4e-4a95-ab65-\
+5e89584433f8"]
 }, Open  ]],
 
 Cell["All Visualizations", "TemplateSubsection",
@@ -6282,22 +6322,22 @@ CellTagsIndex->{
    b3bb-4b2f9c2d9cf6",
    CellTags->"Author"]},
  "DataSources"->{
-  Cell[41878, 847, 306, 5, 
+  Cell[44817, 887, 306, 5, 
   62, "TemplateSubsection", "ExpressionUUID" -> "
    2f813c16-7616-4a9b-9d61-138a88406419",
    CellTags->"DataSources"]},
  "FutureDirections"->{
-  Cell[42562, 867, 276, 4, 
+  Cell[45501, 907, 276, 4, 
   73, "TemplateSubsection", "ExpressionUUID" -> "0e05b85e-5766-4146-
    ba21-0f90110a9fa0",
    CellTags->"FutureDirections"]},
  "Keywords"->{
-  Cell[44870, 919, 182, 2, 
+  Cell[47809, 959, 182, 2, 
   73, "TemplateSubsection", "ExpressionUUID" -> "f6a04214-
    b02d-478d-9d48-6e70fe26310c",
    CellTags->"Keywords"]},
  "LastModifiedDate"->{
-  Cell[46167, 957, 229, 7, 
+  Cell[49106, 997, 229, 7, 
   29, "LastModified", "ExpressionUUID" -> "1aa2e26f-7a41-4e00-a319-
    e0c36758a160",
    CellTags->"LastModifiedDate"]},
@@ -6307,7 +6347,7 @@ CellTagsIndex->{
    a206-556bf4517cf7",
    CellTags->"Mentor"]},
  "References"->{
-  Cell[43814, 892, 313, 5, 
+  Cell[46753, 932, 313, 5, 
   73, "TemplateSubsection", "ExpressionUUID" -> "26b81ffa-
    e0d4-4e08-96db-570d62206ac7",
    CellTags->"References"]}
@@ -6315,14 +6355,14 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Affiliation", 358524, 6273},
- {"Author", 358682, 6278},
- {"DataSources", 358840, 6283},
- {"FutureDirections", 359013, 6288},
- {"Keywords", 359183, 6293},
- {"LastModifiedDate", 359353, 6298},
- {"Mentor", 359515, 6303},
- {"References", 359672, 6308}
+ {"Affiliation", 361463, 6313},
+ {"Author", 361621, 6318},
+ {"DataSources", 361779, 6323},
+ {"FutureDirections", 361952, 6328},
+ {"Keywords", 362122, 6333},
+ {"LastModifiedDate", 362292, 6338},
+ {"Mentor", 362454, 6343},
+ {"References", 362611, 6348}
  }
 *)
 (*NotebookFileOutline
@@ -6365,91 +6405,91 @@ Cell[18894, 352, 6920, 145, 62, "TemplateSectionDivider", "ExpressionUUID" -> \
 Cell[CellGroupData[{
 Cell[25839, 501, 300, 5, 74, "TemplateSection", "ExpressionUUID" -> \
 "e21f1250-a9cb-4128-8ce1-630a0d33d418"],
-Cell[26142, 508, 791, 13, 68, "Text", "ExpressionUUID" -> \
+Cell[26142, 508, 2391, 34, 163, "Text", "ExpressionUUID" -> \
 "79c7172c-5737-40f7-8979-259e2d4b233b"],
-Cell[26936, 523, 141, 3, 30, "Text", "ExpressionUUID" -> \
+Cell[28536, 544, 141, 3, 30, "Text", "ExpressionUUID" -> \
 "de8bf091-1e03-4cae-9fdc-bc4fcefeda9a"],
-Cell[27080, 528, 152, 3, 30, "Input", "ExpressionUUID" -> \
+Cell[28680, 549, 152, 3, 30, "Input", "ExpressionUUID" -> \
 "1ceb3e14-2d46-4e64-aa9a-d890736258c1"]
 }, Open  ]],
-Cell[27247, 534, 7856, 162, 62, "TemplateSectionDivider", "ExpressionUUID" -> \
+Cell[28847, 555, 7856, 162, 62, "TemplateSectionDivider", "ExpressionUUID" -> \
 "227ec745-2ff0-4b63-867e-00bb8e8ff5f3"],
 Cell[CellGroupData[{
-Cell[35128, 700, 186, 3, 74, "TemplateSection", "ExpressionUUID" -> \
+Cell[36728, 721, 186, 3, 74, "TemplateSection", "ExpressionUUID" -> \
 "895e1b14-edc5-4a54-b31b-50d20fbabb49"],
-Cell[35317, 705, 270, 4, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[36917, 726, 270, 4, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "d7981072-a88c-4e3b-9aaa-87a4be2546a4"],
 Cell[CellGroupData[{
-Cell[35612, 713, 183, 3, 62, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[37212, 734, 183, 3, 62, "TemplateSubsection", "ExpressionUUID" -> \
 "d537fa98-880a-4b84-9143-6f72783e721d"],
-Cell[35798, 718, 169, 3, 30, "TemplateComment", "ExpressionUUID" -> \
+Cell[37398, 739, 169, 3, 30, "TemplateComment", "ExpressionUUID" -> \
 "5fc53536-27d9-47ad-b00f-9b56c2f51d60"],
 Cell[CellGroupData[{
-Cell[35992, 725, 318, 7, 29, "Item", "ExpressionUUID" -> \
+Cell[37592, 746, 318, 7, 29, "Item", "ExpressionUUID" -> \
 "7385b297-aa80-4b7f-8ea2-37dbb8de9b65"],
-Cell[36313, 734, 157, 3, 29, "Item", "ExpressionUUID" -> \
+Cell[37913, 755, 157, 3, 29, "Item", "ExpressionUUID" -> \
 "69ac601a-4957-40df-96d3-7bdf2d6de28c"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36519, 743, 186, 3, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[38119, 764, 186, 3, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "c6ddc4ac-6998-41ec-860a-ac5f8c56a32b"],
-Cell[36708, 748, 2917, 52, 524, "Text", "ExpressionUUID" -> \
+Cell[38308, 769, 2917, 52, 524, "Text", "ExpressionUUID" -> \
 "06b68604-601b-452d-9336-064c9d374f51"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[39662, 805, 301, 5, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[41262, 826, 301, 5, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "91936e38-4eb8-4628-a4c0-55803709bd7e"],
-Cell[39966, 812, 1597, 24, 144, "Text", "ExpressionUUID" -> \
+Cell[41566, 833, 2936, 43, 258, "Text", "ExpressionUUID" -> \
 "5bbfdf1d-3e4e-4a95-ab65-5e89584433f8"]
 }, Open  ]],
-Cell[41578, 839, 275, 4, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[44517, 879, 275, 4, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "1da3b7da-a062-4e7a-b938-b0e2f35938e8"],
 Cell[CellGroupData[{
-Cell[41878, 847, 306, 5, 62, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[44817, 887, 306, 5, 62, "TemplateSubsection", "ExpressionUUID" -> \
 "2f813c16-7616-4a9b-9d61-138a88406419",
  CellTags->"DataSources"],
-Cell[42187, 854, 165, 3, 30, "Text", "ExpressionUUID" -> \
+Cell[45126, 894, 165, 3, 30, "Text", "ExpressionUUID" -> \
 "1f8298db-e7ae-4512-88b7-80ddbf05202e"],
-Cell[42355, 859, 170, 3, 30, "Text", "ExpressionUUID" -> \
+Cell[45294, 899, 170, 3, 30, "Text", "ExpressionUUID" -> \
 "dd092344-88b1-40fa-b94d-fcf879f2ac57"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42562, 867, 276, 4, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[45501, 907, 276, 4, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "0e05b85e-5766-4146-ba21-0f90110a9fa0",
  CellTags->"FutureDirections"],
-Cell[42841, 873, 936, 14, 87, "Text", "ExpressionUUID" -> \
+Cell[45780, 913, 936, 14, 87, "Text", "ExpressionUUID" -> \
 "c9cdbd1b-dc85-4123-9e92-6c0ecc9c79ae"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[43814, 892, 313, 5, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[46753, 932, 313, 5, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "26b81ffa-e0d4-4e08-96db-570d62206ac7",
  CellTags->"References"],
-Cell[44130, 899, 703, 15, 68, "Text", "ExpressionUUID" -> \
+Cell[47069, 939, 703, 15, 68, "Text", "ExpressionUUID" -> \
 "3cc1e0d2-0fec-4299-ac34-c3bbcc62105a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[44870, 919, 182, 2, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[47809, 959, 182, 2, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "f6a04214-b02d-478d-9d48-6e70fe26310c",
  CellTags->"Keywords"],
-Cell[45055, 923, 230, 4, 30, "TemplateComment", "ExpressionUUID" -> \
+Cell[47994, 963, 230, 4, 30, "TemplateComment", "ExpressionUUID" -> \
 "1a0e6a6d-7d07-4185-ab25-47951a3cae93"],
 Cell[CellGroupData[{
-Cell[45310, 931, 263, 4, 29, "Item", "ExpressionUUID" -> \
+Cell[48249, 971, 263, 4, 29, "Item", "ExpressionUUID" -> \
 "c75e8d58-462e-4ea2-bffa-cb2450fcd290"],
-Cell[45576, 937, 214, 4, 29, "Item", "ExpressionUUID" -> \
+Cell[48515, 977, 214, 4, 29, "Item", "ExpressionUUID" -> \
 "4e89e911-b97a-4da3-84b4-968f558e9f30"]
 }, Open  ]]
 }, Open  ]],
-Cell[45817, 945, 160, 3, 73, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[48756, 985, 160, 3, 73, "TemplateSubsection", "ExpressionUUID" -> \
 "a99c0f4b-d3ee-4f2a-ba55-2d72d81bccee"],
 Cell[CellGroupData[{
-Cell[46002, 952, 162, 3, 62, "TemplateSubsection", "ExpressionUUID" -> \
+Cell[48941, 992, 162, 3, 62, "TemplateSubsection", "ExpressionUUID" -> \
 "dbf0c9b1-78bd-4471-9a34-e45c5c173578"],
-Cell[46167, 957, 229, 7, 29, "LastModified", "ExpressionUUID" -> \
+Cell[49106, 997, 229, 7, 29, "LastModified", "ExpressionUUID" -> \
 "1aa2e26f-7a41-4e00-a319-e0c36758a160",
  CellTags->"LastModifiedDate"],
-Cell[46399, 966, 917, 24, 43, "Input", "ExpressionUUID" -> \
+Cell[49338, 1006, 917, 24, 43, "Input", "ExpressionUUID" -> \
 "10e5e482-92a3-4882-8acc-bae52b5ff8ca"]
 }, Open  ]]
 }, Open  ]]
