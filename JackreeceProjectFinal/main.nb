@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13453,        383]
-NotebookOptionsPosition[     11608,        333]
-NotebookOutlinePosition[     11952,        348]
-CellTagsIndexPosition[     11909,        345]
+NotebookDataLength[     12534,        344]
+NotebookOptionsPosition[     11257,        308]
+NotebookOutlinePosition[     11601,        323]
+CellTagsIndexPosition[     11558,        320]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -28,11 +28,11 @@ Cell[BoxData[
 c711f05b7525"],
 
 Cell[BoxData["\<\"C:\\\\Users\\\\vestal \
-etim-oqua\\\\Documents\\\\EmotionCategorizationWSS17\\\\jackreece\"\>"], \
-"Output",
- CellChangeTimes->{3.708107756431859*^9, 
-  3.708107787235911*^9},ExpressionUUID->"7c924da4-1a68-4709-9e27-\
-bcaf18994241"]
+etim-oqua\\\\Documents\\\\EmotionCategorizationWSS17\\\\JackreeceProjectFinal\
+\"\>"], "Output",
+ CellChangeTimes->{3.708107756431859*^9, 3.708107787235911*^9, 
+  3.708180436611599*^9},ExpressionUUID->"7d53abaf-7900-4c83-b0a8-\
+5bb2167167d5"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -248,49 +248,27 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"affectSense", "[", "\"\<Project is getting very intense\>\"", 
-  "]"}]], "Input",
- CellChangeTimes->{{3.7081045756474066`*^9, 
-  3.7081045910602336`*^9}},ExpressionUUID->"acf03f84-2430-4fd8-a158-\
-44760f63188f"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"\<\"apprehension\"\>", ",", "\<\"interest\"\>", 
-   ",", "\<\"pensiveness\"\>", ",", "\<\"acceptance\"\>"}], "}"}]], "Output",
- CellChangeTimes->{3.7081045915594344`*^9, 
-  3.708108802115019*^9},ExpressionUUID->"977d8876-7493-4d58-b914-\
-ea461c583ce7"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"affectSense", "[", "\"\<I am learning a lot\>\"", "]"}]], "Input",
- CellChangeTimes->{{3.7081045978930454`*^9, 
-  3.7081046282194986`*^9}},ExpressionUUID->"e044d131-894e-4a74-b5a6-\
-fdb18a43e18c"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"\<\"annoyance\"\>", ",", "\<\"distraction\"\>", 
-   ",", "\<\"pensiveness\"\>", ",", "\<\"acceptance\"\>"}], "}"}]], "Output",
- CellChangeTimes->{{3.7081046121826706`*^9, 3.7081046304971027`*^9}, 
-   3.708108804585843*^9},ExpressionUUID->"e04da147-faf6-47e3-8997-\
-67cf051a1097"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"CloudDeploy", "[", 
-  RowBox[{"FormPage", "[", 
-   RowBox[{
-    RowBox[{"\"\<SaySomething\>\"", " ", "\[Rule]", " ", "\"\<String\>\""}], 
-    ",", " ", "affectSense"}], "]"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{"FormPage", "[", 
+    RowBox[{
+     RowBox[{"\"\<SaySomething\>\"", " ", "\[Rule]", " ", "\"\<String\>\""}], 
+     ",", " ", 
+     RowBox[{
+      RowBox[{"affectSense", "[", "#SaySomething", "]"}], "&"}]}], "]"}], ",",
+    " ", 
+   RowBox[{"CloudObject", "[", "\"\<SaySomethingApp\>\"", "]"}]}], 
+  "]"}]], "Input",
  CellChangeTimes->{{3.7081151017566605`*^9, 3.7081151724427953`*^9}, 
-   3.7081153747167053`*^9, {3.7081154425365486`*^9, 
-   3.708115443299576*^9}},ExpressionUUID->"dbbf117e-27a2-4d10-a170-\
+   3.7081153747167053`*^9, {3.7081154425365486`*^9, 3.708115443299576*^9}, {
+   3.7081804162993517`*^9, 3.708180429317511*^9}, 3.708181277978323*^9, {
+   3.708258235619072*^9, 3.708258255166207*^9}, {3.70825828947797*^9, 
+   3.708258292634853*^9}, {3.708258388868391*^9, 3.708258414845892*^9}, {
+   3.7082584489700975`*^9, 3.7082584856182766`*^9}, {3.7082587069826465`*^9, 
+   3.708258712161297*^9}, {3.7082587923371935`*^9, 3.708258826633217*^9}, {
+   3.7082592133705463`*^9, 3.708259240080182*^9}, {3.7082592953007264`*^9, 
+   3.708259317431862*^9}, {3.7082597757421293`*^9, 
+   3.708259783489378*^9}},ExpressionUUID->"dbbf117e-27a2-4d10-a170-\
 2620a170d390"],
 
 Cell[BoxData[
@@ -299,10 +277,10 @@ Cell[BoxData[
    TagBox[
     ButtonBox[
      PaneSelectorBox[{
-      False->"\<\"https://www.wolframcloud.com/objects/67262e67-d9ff-4d8a-\
-b26e-ccd1d60ecba8\"\>", True->
-      StyleBox["\<\"https://www.wolframcloud.com/objects/67262e67-d9ff-4d8a-\
-b26e-ccd1d60ecba8\"\>", "HyperlinkActive"]}, Dynamic[
+      False->"\<\"https://www.wolframcloud.com/objects/user-a543cc5b-996e-\
+42ff-a4df-5050c6ce7842/SaySomethingApp\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/user-a543cc5b-996e-\
+42ff-a4df-5050c6ce7842/SaySomethingApp\"\>", "HyperlinkActive"]}, Dynamic[
        CurrentValue["MouseOver"]],
       BaseStyle->{"Hyperlink"},
       FrameMargins->0,
@@ -310,29 +288,26 @@ b26e-ccd1d60ecba8\"\>", "HyperlinkActive"]}, Dynamic[
      BaseStyle->"Hyperlink",
      ButtonData->{
        URL[
-       "https://www.wolframcloud.com/objects/67262e67-d9ff-4d8a-b26e-\
-ccd1d60ecba8"], None},
+       "https://www.wolframcloud.com/objects/user-a543cc5b-996e-42ff-a4df-\
+5050c6ce7842/SaySomethingApp"], None},
      ButtonNote->
-      "https://www.wolframcloud.com/objects/67262e67-d9ff-4d8a-b26e-\
-ccd1d60ecba8"],
+      "https://www.wolframcloud.com/objects/user-a543cc5b-996e-42ff-a4df-\
+5050c6ce7842/SaySomethingApp"],
     Annotation[#, 
-     "https://www.wolframcloud.com/objects/67262e67-d9ff-4d8a-b26e-\
-ccd1d60ecba8", "Hyperlink"]& ], "]"}],
+     "https://www.wolframcloud.com/objects/user-a543cc5b-996e-42ff-a4df-\
+5050c6ce7842/SaySomethingApp", "Hyperlink"]& ], "]"}],
   CloudObject[
-  "https://www.wolframcloud.com/objects/67262e67-d9ff-4d8a-b26e-ccd1d60ecba8"],
+  "https://www.wolframcloud.com/objects/user-a543cc5b-996e-42ff-a4df-\
+5050c6ce7842/SaySomethingApp"],
   SelectWithContents->True]], "Output",
- CellChangeTimes->{3.70811523949391*^9, 
-  3.708115560691222*^9},ExpressionUUID->"5bf0f61d-285f-4444-b496-\
-67bd2822f3f5"]
-}, Open  ]],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.7081045835722203`*^9, 
-  3.7081045844302216`*^9}},ExpressionUUID->"e01a636c-5f6b-41b2-94bb-\
-ea3b9dafeb89"]
+ CellChangeTimes->{{3.7082584451339755`*^9, 3.7082584574619074`*^9}, 
+   3.708258537979426*^9, 3.708258876273723*^9, 3.708259369071868*^9, 
+   3.7082598410372562`*^9},ExpressionUUID->"a0558bd0-a468-44d6-aada-\
+c1f5350fe4cc"]
+}, Open  ]]
 },
-WindowSize->{1113, 479},
-WindowMargins->{{Automatic, 29}, {80, Automatic}},
+WindowSize->{1113, 289},
+WindowMargins->{{-8, Automatic}, {Automatic, 30}},
 FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 27, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -350,41 +325,27 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 232, 5, 30, "Input", "ExpressionUUID" -> \
 "5a7c159c-3117-40a5-8aa9-c711f05b7525"],
-Cell[815, 29, 250, 5, 30, "Output", "ExpressionUUID" -> \
-"7c924da4-1a68-4709-9e27-bcaf18994241"]
+Cell[815, 29, 284, 5, 30, "Output", "ExpressionUUID" -> \
+"7d53abaf-7900-4c83-b0a8-5bb2167167d5"]
 }, Open  ]],
-Cell[1080, 37, 257, 6, 30, "Input", "ExpressionUUID" -> \
+Cell[1114, 37, 257, 6, 30, "Input", "ExpressionUUID" -> \
 "49ca1939-e8ce-4e0b-ac8f-4e1067024ed6"],
-Cell[1340, 45, 3829, 104, 240, "Input", "ExpressionUUID" -> \
+Cell[1374, 45, 3829, 104, 240, "Input", "ExpressionUUID" -> \
 "2855b792-1446-41b1-a5e2-62ec9dc63e26"],
-Cell[5172, 151, 354, 9, 30, "Input", "ExpressionUUID" -> \
+Cell[5206, 151, 354, 9, 30, "Input", "ExpressionUUID" -> \
 "e9fda52a-fa8d-4ca6-b1c8-8813cdb214c3"],
-Cell[5529, 162, 964, 22, 50, "Input", "ExpressionUUID" -> \
+Cell[5563, 162, 964, 22, 50, "Input", "ExpressionUUID" -> \
 "fc25bf8e-4cc9-4d70-85de-9cb29c581c07"],
-Cell[6496, 186, 1717, 45, 88, "Input", "ExpressionUUID" -> \
+Cell[6530, 186, 1717, 45, 88, "Input", "ExpressionUUID" -> \
 "b3138411-8cad-460d-b154-0fe811a9cead"],
-Cell[8216, 233, 506, 12, 30, "Input", "ExpressionUUID" -> \
+Cell[8250, 233, 506, 12, 30, "Input", "ExpressionUUID" -> \
 "dfc68901-1768-41c8-88b0-3ff01fb6e6b2"],
 Cell[CellGroupData[{
-Cell[8747, 249, 235, 5, 30, "Input", "ExpressionUUID" -> \
-"acf03f84-2430-4fd8-a158-44760f63188f"],
-Cell[8985, 256, 292, 6, 30, "Output", "ExpressionUUID" -> \
-"977d8876-7493-4d58-b914-ea461c583ce7"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9314, 267, 220, 4, 30, "Input", "ExpressionUUID" -> \
-"e044d131-894e-4a74-b5a6-fdb18a43e18c"],
-Cell[9537, 273, 319, 6, 30, "Output", "ExpressionUUID" -> \
-"e04da147-faf6-47e3-8997-67cf051a1097"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9893, 284, 423, 9, 30, "Input", "ExpressionUUID" -> \
+Cell[8781, 249, 1113, 22, 30, "Input", "ExpressionUUID" -> \
 "dbbf117e-27a2-4d10-a170-2620a170d390"],
-Cell[10319, 295, 1114, 30, 33, "Output", "ExpressionUUID" -> \
-"5bf0f61d-285f-4444-b496-67bd2822f3f5"]
-}, Open  ]],
-Cell[11448, 328, 156, 3, 30, "Input", "ExpressionUUID" -> \
-"4eb54ca3-6038-42f6-8088-45262df8295e"]
+Cell[9897, 273, 1344, 32, 33, "Output", "ExpressionUUID" -> \
+"a0558bd0-a468-44d6-aada-c1f5350fe4cc"]
+}, Open  ]]
 }
 ]
 *)
